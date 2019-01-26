@@ -15,7 +15,7 @@ public class GameController : Singleton<GameController>
     public int score;
     bool gameHasEnded;
     public Difficulty difficulty = new Difficulty(1);
-;
+
     void Start()
     {
         timeRemaining = 60;
