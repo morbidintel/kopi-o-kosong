@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Difficulty : MonoBehaviour
+public class Difficulty
 {
     public List<string> availableDrinks;
     public int maxOrderSize;
-    public int minOrderSize =1;
+    public int minOrderSize = 1;
     public int stageDifficulty;
 
     public Difficulty(int difficulty)
     {
+        maxOrderSize = 1 + Mathf.RoundToInt((difficulty - 1) / 2);
+
         stageDifficulty = difficulty;
         availableDrinks = new List<string>();
         availableDrinks.Add("kopi o");

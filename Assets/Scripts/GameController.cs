@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Gamelogic.Extensions;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
     public const float maxTimeRemaining = 60f;
     public float timeRemaining;
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public int score;
     bool gameHasEnded;
+    public Difficulty difficulty = new Difficulty(1);
 
     void Start()
     {

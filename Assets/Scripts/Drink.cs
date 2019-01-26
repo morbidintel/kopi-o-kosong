@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drink : MonoBehaviour
+public class Drink
 {
     public int sugarLevel;
     public int drinkKopi;

@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gamelogic.Extensions;
 
-public class Orderer : MonoBehaviour
+public class Orderer : Singleton<Orderer>
 {
     private List<Customer> orders = new List<Customer>();
     private Auntie auntie;
 
     public GameObject customerPrefab;
 
-    private Difficulty difficulty = new Difficulty(1);
+    private Difficulty difficulty;
 
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = GameController.Instance.difficulty;
         StartCoroutine(AuntieCoroutine());
         StartCoroutine(OrderCoroutine());
     }
