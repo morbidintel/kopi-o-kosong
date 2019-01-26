@@ -30,7 +30,6 @@ public class InputController : MonoBehaviour
         playerDrink = unker.GetComponent("PlayerDrink") as PlayerDrink;
         gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-        pausePanel.SetActive(false);
     }
 
     // Update is called once per frame
