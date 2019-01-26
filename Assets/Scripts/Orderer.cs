@@ -69,14 +69,10 @@ public class Orderer : Singleton<Orderer>
 
         if (orders[0].SubmitDrink(drink))
         {
-            if (orders[0].IsCompleted())
-            {
-                Customer completedCust = orders[0];
-                completedCust.OnComplete();
-                completedCust.Leave();
-                ProcessQueue();
-            }
-
+            Customer completedCust = orders[0];
+            completedCust.OnComplete();
+            completedCust.Leave();
+            ProcessQueue();
             return;
         }
 

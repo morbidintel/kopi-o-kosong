@@ -71,7 +71,7 @@ public class Drink
             PrintDrinkStr(drinkKopi, drinkTeh),
             PrintMilkStr(milkEvaporated, milkCondensed),
             PrintSugarStr(sugarLevel),
-            PrintIceStr(iceLevel)});
+            PrintIceStr(iceLevel)}).Trim();
     }
 
     // Check equivalency of 2 drinks.

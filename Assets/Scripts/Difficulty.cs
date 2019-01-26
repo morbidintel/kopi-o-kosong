@@ -75,6 +75,17 @@ public class Difficulty
         }
     }
 
+    public Drink GetDrink()
+    {
+        int[] drinkFormula = DrinkTypes.Types[availableDrinks[Random.RandomRange(0, availableDrinks.Count)]];
+        return new Drink(drinkFormula[0],
+                drinkFormula[1],
+                drinkFormula[2],
+                drinkFormula[3],
+                drinkFormula[4],
+                drinkFormula[5]);
+    }
+
     public List<Drink> GenerateDrinkList()
     {
         maxOrderSize = Random.Range(minOrderSize, maxOrderSize);

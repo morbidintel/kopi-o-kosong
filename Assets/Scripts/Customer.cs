@@ -8,73 +8,59 @@ using UnityEngine.Events;
 
 public class Customer : MonoBehaviour
 {
-	// Start is called before the first frame update
-	public List<Drink> incomplete = new List<Drink>();
-	public List<Drink> fulfilled = new List<Drink>();
-	public float timeRemaining;
-	public bool success;
+    // Start is called before the first frame update
+    public Drink drinkWanted;
+    public float timeRemaining;
+    public bool success;
     public bool isActiveCustomer;
 
     public TextMeshPro tmp;
     public GameObject speech;
 
     [SerializeField]
-	UnityEvent onComplete;
+    UnityEvent onComplete;
 
-	SpriteRenderer spriteRenderer;
-	public Sprite[] characters = new Sprite[5];
-	public void Start() {
-		spriteRenderer = GetComponent<SpriteRenderer>();
-		int index = Random.Range(0, 5);
-		spriteRenderer.sprite = characters[index];
+    SpriteRenderer spriteRenderer;
+    public Sprite[] characters = new Sprite[5];
+    public void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        int index = Random.Range(0, 5);
+        spriteRenderer.sprite = characters[index];
         speech.SetActive(false);
     }
 
-	public void Init(Difficulty difficulty, float timeLimit)
-	{
-		incomplete = difficulty.GenerateDrinkList();
-		timeRemaining = timeLimit;
+    public void Init(Difficulty difficulty, float timeLimit)
+    {
+        drinkWanted = difficulty.GetDrink();
+        timeRemaining = timeLimit;
     }
 
-	public bool SubmitDrink(Drink completedDrink)
-	{
-		foreach (Drink drink in incomplete)
-		{
-			if (drink.Equals(completedDrink))
-			{
-				incomplete.Remove(drink);
-				fulfilled.Add(drink);
-				return true;
-			}
-		}
-		return false;
-	}
+    public bool SubmitDrink(Drink completedDrink)
+    {
+        return completedDrink.Equals(drinkWanted);
+    }
 
-	public bool IsCompleted()
-	{
-		return (incomplete.Count == 0);
-	}
+    public void OnComplete()
+    {
+        onComplete.Invoke();
+    }
 
-	public void OnComplete()
-	{
-		onComplete.Invoke();
-	}
+    void Update()
+    {
+        timeRemaining -= Time.deltaTime;
+    }
 
-	void Update()
-	{
-		timeRemaining -= Time.deltaTime;
-	}
+    public void OnFinishTween()
+    {
+        Destroy(gameObject);
+    }
 
-	public void OnFinishTween()
-	{
-		Destroy(gameObject);
-	}
-
-	// To remove all the text when auntie spawns
-	public void ClearText() 
-	{
-		tmp.text = "";
-	}
+    // To remove all the text when auntie spawns
+    public void ClearText()
+    {
+        tmp.text = "";
+    }
 
     public void MoveTo(Vector3 location)
     {
@@ -83,37 +69,22 @@ public class Customer : MonoBehaviour
 
     public void RenderText()
     {
-		// Do not render text when it is not the object in front
-		if (transform.GetSiblingIndex() != 0)
-			return;
+        // Do not render text when it is not the object in front
+        if (transform.GetSiblingIndex() != 0)
+            return;
         setSpeech(true);
         ForceRenderText();
     }
 
-	public void ForceRenderText()
+    public void ForceRenderText()
     {
         List<string> incompleteDrinks = new List<string>();
         List<string> completeDrinks = new List<string>();
         setSpeech(true);
 
-        foreach (Drink drink in incomplete)
-        {
-            incompleteDrinks.Add(drink.ToString());
-        }
-        string incompleteDrinksStr = "<b>" + string.Join(", ", incompleteDrinks.ToArray());
-        incompleteDrinksStr += "</b>";
+        tmp.text = "I would like a " + drinkWanted + ".";
 
-        foreach(Drink drink in fulfilled)
-        {
-            completeDrinks.Add(drink.ToString());
-        }
-        string completeDrinkStr = "<s>" + string.Join(", ", completeDrinks.ToArray());
-        completeDrinkStr += "</s>";
-
-        string text = "I would like a " + incompleteDrinksStr + completeDrinkStr;
-
-        tmp.text = text + ".";
-		Debug.Log(tmp.text);
+        Debug.Log(tmp.text);
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 
