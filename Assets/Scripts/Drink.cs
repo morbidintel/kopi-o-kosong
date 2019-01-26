@@ -47,16 +47,16 @@ public class Drink : MonoBehaviour
     }
 
     // Print name of the drink.
-    public void ToString() 
+    public string ToString() 
     {
         return this.PrintEnum(this.drinkType.ToString()) + 
             this.PrintEnum(this.milkType.ToString()) +
-            this.PrintEnum(this.GetSugarLevel(this.SugarLevel.ToString())) +
+            this.PrintEnum(this.GetSugarLevel(this.sugarLevel).ToString()) +
             this.PrintEnum(this.iceLevel.ToString());
     }
 
     // Check equivalency of 2 drinks.
-    public void Equals(Drink other) 
+    public bool Equals(Drink other) 
     {
         return other.drinkType == this.drinkType &&
             other.milkType == this.milkType &&
@@ -78,7 +78,7 @@ public class Drink : MonoBehaviour
 
     private SugarLevel GetSugarLevel(int sugarLevel)
     {
-        if (Enum.IsDefined(typeof(SugarLevel), sugarLevel)) 
+        if (System.Enum.IsDefined(typeof(SugarLevel), sugarLevel)) 
         {  
             return (SugarLevel) sugarLevel;
         }
