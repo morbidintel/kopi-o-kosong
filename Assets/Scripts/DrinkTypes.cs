@@ -86,4 +86,23 @@ public class DrinkTypes : MonoBehaviour
         stage4 = new List<string>(stage3);
         //todo: stage 4 and 5
     }
+
+    public List<string> getDrinkList(int stage)
+    {
+        switch (stage)
+        {
+            case 1:
+                return stage1;
+            case 2:
+                return stage2;
+            case 3:
+                return stage3;
+            case 4:
+                return stage4;
+            case 5:
+                return stage5;
+            default:
+                return stage1;
+        }
+    }
 }

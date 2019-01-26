@@ -7,11 +7,12 @@ public class Orderer : MonoBehaviour
 
     private float t;
     private List<Drink> orders;
-
+    private DrinkTypes drinkTypes;
     public GameObject cup;
     // Start is called before the first frame update
     void Start()
     {
+        drinkTypes = new DrinkTypes();
         t = Time.time + 60;
     }
 
@@ -43,7 +44,16 @@ public class Orderer : MonoBehaviour
 
     void GenerateOrder()
     {
-        orders.Add(new Drink());
+        var drinkList = drinkTypes.getDrinkList(1);
+        var drinkFormula = drinkList[Random.Range(0, drinkList.Count)];
+        orders.Add(new Drink(
+                drinkFormula[0],
+                drinkFormula[1],
+                drinkFormula[2],
+                drinkFormula[3],
+                drinkFormula[4],
+                drinkFormula[5]
+            ));
     }
 
     void UpdateTimeForNextOrder()
