@@ -7,9 +7,11 @@ public class Difficulty : MonoBehaviour
     public List<string> availableDrinks;
     public int maxOrderSize;
     public int minOrderSize =1;
+    public int stageDifficulty;
 
     public Difficulty(int difficulty)
     {
+        stageDifficulty = difficulty;
         availableDrinks = new List<string>();
         availableDrinks.Add("kopi o");
         availableDrinks.Add("kopi");
