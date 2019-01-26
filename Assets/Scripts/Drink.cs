@@ -56,9 +56,21 @@ public class Drink : MonoBehaviour
     }
 
     // Print name of the drink.
-    public string ToString()
+    public override string ToString()
     {
-        return "";
+        if (drinkKopi + drinkTeh > 1 ||
+            milkCondensed + milkEvaporated > 1 ||
+            sugarLevel > 2 ||
+            iceLevel > 1)
+        {
+            return "???";
+        }
+
+        return string.Join(" ", new string[]{ 
+            PrintDrinkStr(drinkKopi, drinkTeh),
+            PrintMilkStr(milkEvaporated, milkCondensed),
+            PrintSugarStr(sugarLevel),
+            PrintIceStr(iceLevel)});
     }
 
     // Check equivalency of 2 drinks.
@@ -70,5 +82,51 @@ public class Drink : MonoBehaviour
             other.milkEvaporated == milkEvaporated &&
             other.milkCondensed == milkCondensed &&
             other.iceLevel == iceLevel;
+    }
+
+    private string PrintDrinkStr(int kopi, int teh)
+    {
+        if (kopi == 1)
+        {
+            return "KOPI";
+        }
+        if (teh == 1)
+        {
+            return "TEH";
+        }
+        return "";
+    }
+
+    private string PrintMilkStr(int evap, int cond)
+    {
+        if (evap == 1)
+        {
+            return "C";
+        }
+        if (cond == 1)
+        {
+            return "";
+        }
+        return "O";
+
+    }
+
+    private string PrintSugarStr(int sugar)
+    {
+        switch (sugar)
+        {
+            case 0: return "KOSONG";
+            case 1: return "SIEW DAI";
+            default: return "";
+        }
+    }
+
+    private string PrintIceStr(int ice)
+    {
+        if (ice == 1)
+        {
+            return "PENG";
+        }
+        return "";
     }
 }
