@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour
     public bool isActiveCustomer;
 
     public TextMeshPro tmp;
+    public GameObject speech;
 
     [SerializeField]
 	UnityEvent onComplete;
@@ -26,13 +27,13 @@ public class Customer : MonoBehaviour
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		int index = Random.Range(0, 5);
 		spriteRenderer.sprite = characters[index];
-	}
+        speech.SetActive(false);
+    }
 
 	public void Init(Difficulty difficulty, float timeLimit)
 	{
 		incomplete = difficulty.GenerateDrinkList();
 		timeRemaining = timeLimit;
-        transform.GetComponent<SpriteRenderer>().sortingOrder = 999 - transform.GetSiblingIndex() * 3; // it's 5 am. fuck it.
     }
 
 	public bool SubmitDrink(Drink completedDrink)
@@ -75,46 +76,27 @@ public class Customer : MonoBehaviour
 		tmp.text = "";
 	}
 
+    public void MoveTo(Vector3 location)
+    {
+        transform.DOMove(location, 1).OnComplete(RenderText);
+    }
+
     public void RenderText()
     {
 		// Do not render text when it is not the object in front
 		if (transform.GetSiblingIndex() != 0)
 			return;
-
-        transform.GetComponent<SpriteRenderer>().sortingOrder = 999;
-        tmp.sortingOrder = 999;
-
-        List<string> incompleteDrinks = new List<string>();
-        List<string> completeDrinks = new List<string>();
-
-
-        foreach(Drink drink in incomplete)
-        {
-            incompleteDrinks.Add(drink.ToString());
-        }
-        string incompleteDrinksStr = "<b>" + string.Join(", ", incompleteDrinks.ToArray());
-        incompleteDrinksStr += "</b>";
-
-        foreach(Drink drink in fulfilled)
-        {
-            completeDrinks.Add(drink.ToString());
-        }
-        string completeDrinkStr = "<s>" + string.Join(", ", completeDrinks.ToArray());
-        completeDrinkStr += "</s>";
-
-        string text = "I would like a " + incompleteDrinksStr + completeDrinkStr;
-
-        tmp.text = text + ".";
-        tmp.GetComponentInParent<VertexJitter>().StartAnim();
+        setSpeech(true);
+        ForceRenderText();
     }
 
 	public void ForceRenderText()
     {
         List<string> incompleteDrinks = new List<string>();
         List<string> completeDrinks = new List<string>();
+        setSpeech(true);
 
-
-        foreach(Drink drink in incomplete)
+        foreach (Drink drink in incomplete)
         {
             incompleteDrinks.Add(drink.ToString());
         }
@@ -133,5 +115,29 @@ public class Customer : MonoBehaviour
         tmp.text = text + ".";
 		Debug.Log(tmp.text);
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
+    }
+
+    private void setSpeech(bool val)
+    {
+        tmp.GetComponent<MeshRenderer>().enabled = val;
+        speech.SetActive(val);
+    }
+
+    public void SetLayerOrder(int i)
+    {
+        transform.GetComponent<SpriteRenderer>().sortingOrder = i;
+        speech.GetComponent<SpriteRenderer>().sortingOrder = i;
+        tmp.sortingOrder = i;
+    }
+
+    public void Leave()
+    {
+        setSpeech(false);
+        transform.DOMove(new Vector3(-15, 0, 0), 1).OnComplete(Kill);
+    }
+
+    private void Kill()
+    {
+        Destroy(gameObject);
     }
 }
