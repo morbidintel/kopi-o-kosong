@@ -90,6 +90,7 @@ public class InputController : MonoBehaviour
         {
             playerDrink.drink.AddIce();
             playClip(iceClip);
+			iceCubes.SetActive(true);
 			iceCubes.GetComponent<DOTweenPath>().DOPlay();
 			Debug.Log("Y");
         }

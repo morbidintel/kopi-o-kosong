@@ -396,7 +396,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -795,6 +795,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2123597984}
+  - {fileID: 2131778810}
   m_Father: {fileID: 1160247348}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1141,7 +1142,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -1354,7 +1355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1013079428
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,7 +1388,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -1411,7 +1412,29 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2131778809}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1013079427}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTweenCreated:
@@ -1469,7 +1492,7 @@ MonoBehaviour:
   - {x: 3.161395, y: 1.1999912, z: 0}
   - {x: 0.7798462, y: 1.4719975, z: 0}
   - {x: -0.5405662, y: 1.3403687, z: 0}
-  - {x: -0.986665, y: 0.19702137, z: 0}
+  - {x: -0.9843045, y: 0.2452175, z: 0}
   fullWps: []
   path:
     wpLengths:
@@ -1477,8 +1500,8 @@ MonoBehaviour:
     - 3.9390666
     - 2.8593328
     - 2.40009
-    - 1.350652
-    - 1.2475952
+    - 1.3490995
+    - 1.2022256
     type: 1
     subdivisionsXSegment: 10
     subdivisions: 60
@@ -1488,13 +1511,13 @@ MonoBehaviour:
     - {x: 3.161395, y: 1.1999912, z: 0}
     - {x: 0.7798462, y: 1.4719975, z: 0}
     - {x: -0.5405662, y: 1.3403687, z: 0}
-    - {x: -0.986665, y: 0.19702137, z: 0}
+    - {x: -0.9843045, y: 0.2452175, z: 0}
     controlPoints:
     - a: {x: 5.8280706, y: 0.35481983, z: 0}
       b: {x: 0, y: 0, z: 0}
-    - a: {x: -1.4327638, y: -0.946326, z: 0}
+    - a: {x: -1.4280428, y: -0.8499337, z: 0}
       b: {x: 0, y: 0, z: 0}
-    length: 11.797698
+    length: 11.750766
     isFinalized: 1
     timesTable:
     - 0.016666668
@@ -1594,30 +1617,30 @@ MonoBehaviour:
     - 8.866592
     - 9.038622
     - 9.199165
-    - 9.34927
-    - 9.491058
-    - 9.6248045
-    - 9.750794
-    - 9.869351
-    - 9.980879
-    - 10.085913
-    - 10.185185
-    - 10.279698
-    - 10.370789
-    - 10.460172
-    - 10.549927
-    - 10.640358
-    - 10.732409
-    - 10.828048
-    - 10.928071
-    - 11.032402
-    - 11.140375
-    - 11.250954
-    - 11.362885
-    - 11.474816
-    - 11.585395
-    - 11.693368
-    - 11.797698
+    - 9.349271
+    - 9.49106
+    - 9.62481
+    - 9.750812
+    - 9.869394
+    - 9.980963
+    - 10.086045
+    - 10.185346
+    - 10.279811
+    - 10.370688
+    - 10.459566
+    - 10.548366
+    - 10.637185
+    - 10.726878
+    - 10.819492
+    - 10.915942
+    - 11.016275
+    - 11.119946
+    - 11.226022
+    - 11.333354
+    - 11.440685
+    - 11.546762
+    - 11.650433
+    - 11.750766
   inspectorMode: 0
   pathType: 1
   handlesType: 0
@@ -1666,7 +1689,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: 166f1419aa8721c4385a38e44bc8c15e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b669427a1c909b248bfc9ee15f1b00e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2172,7 +2195,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -2621,6 +2644,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123597983}
   m_CullTransparentMesh: 0
+--- !u!1 &2131778809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2131778810}
+  - component: {fileID: 2131778812}
+  - component: {fileID: 2131778811}
+  m_Layer: 0
+  m_Name: ice cubes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2131778810
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131778809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 767769489}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00000062585, y: -0.00000023842}
+  m_SizeDelta: {x: 46.25, y: 52}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2131778811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131778809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: b669427a1c909b248bfc9ee15f1b00e5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &2131778812
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131778809}
+  m_CullTransparentMesh: 0
 --- !u!1 &2141610527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,7 +2817,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
