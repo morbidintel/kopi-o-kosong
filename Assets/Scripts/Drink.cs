@@ -4,87 +4,71 @@ using UnityEngine;
 
 public class Drink : MonoBehaviour
 {
-    public enum SugarLevel {KOSONG, SIEW_DAI, NORMAL, SWEET_AF};
-    public enum DrinkType {TEH, KOPI};
-    public enum MilkType {O, C, NORMAL}
-    public enum IceLevel {NONE, PENG}
-
     public int sugarLevel;
-    public DrinkType drinkType;
-    public MilkType milkType;
-    public IceLevel iceLevel;
+    public int drinkKopi;
+    public int drinkTeh;
+    public int milkCondensed;
+    public int milkEvaporated;
+    public int iceLevel;
 
     // Initialise an empty drink, for starting a new order fulfilment.
-    public Drink() {}
+    public Drink() { }
 
     // Initialise with specific types. For orders.
-    public Drink(DrinkType drinkType, MilkType milkType, int sugarLevel, IceLevel iceLevel) 
+    public Drink(int sugarLevel, int drinkKopi, int drinkTeh, int milkCondensed, int milkEvaporated, int iceLevel)
     {
-        this.drinkType = drinkType;
-        this.milkType = milkType;
         this.sugarLevel = sugarLevel;
+        this.drinkKopi = drinkKopi;
+        this.drinkTeh = drinkTeh;
+        this.milkCondensed = milkCondensed;
+        this.milkEvaporated = milkEvaporated;
         this.iceLevel = iceLevel;
     }
 
-    public void AddDrink() 
+    public void AddDrinkKopi()
     {
-
+        drinkKopi++;
     }
 
-    public void AddMilk() 
+    public void AddDrinkTeh()
     {
-
+        drinkTeh++;
     }
 
-    public void AddSugar() 
+    public void AddMilkEvaporated()
     {
-
+        milkEvaporated++;
     }
 
-    public void AddIce() 
+    public void AddMilkCondensed()
     {
+        milkCondensed++;
+    }
 
+    public void AddIce()
+    {
+        iceLevel++;
+    }
+
+    public void AddSugar()
+    {
+        sugarLevel++;
     }
 
     // Print name of the drink.
-    public string ToString() 
+    public string ToString()
     {
-        return this.PrintEnum(this.drinkType.ToString()) + 
-            this.PrintEnum(this.milkType.ToString()) +
-            this.PrintEnum(this.GetSugarLevel(this.sugarLevel).ToString()) +
-            this.PrintEnum(this.iceLevel.ToString());
+        return "";
     }
 
     // Check equivalency of 2 drinks.
-    public bool Equals(Drink other) 
+    public bool Equals(Drink other)
     {
-        return other.drinkType == this.drinkType &&
-            other.milkType == this.milkType &&
-            other.sugarLevel == this.sugarLevel &&
-            other.iceLevel == this.iceLevel;
-    }
-
-    private string PrintEnum(string value) 
-    {
-        if (value.Equals("NORMAL") || value.Equals("NONE"))
-        {
-            return "";
-        } 
-        else 
-        {
-            return value.Replace("_", " ");
-        }
-    }
-
-    private SugarLevel GetSugarLevel(int sugarLevel)
-    {
-        if (System.Enum.IsDefined(typeof(SugarLevel), sugarLevel)) 
-        {  
-            return (SugarLevel) sugarLevel;
-        }
-        else 
-        {
-            return SugarLevel.SWEET_AF;
-        }
+        return other.sugarLevel == sugarLevel &&
+            other.drinkTeh == drinkTeh &&
+            other.drinkKopi == drinkKopi &&
+            other.milkEvaporated == milkEvaporated &&
+            other.milkCondensed == milkCondensed &&
+            other.iceLevel == iceLevel;
     }
 }
