@@ -46,9 +46,13 @@ namespace TMPro.Examples
 
         void Start()
         {
-            StartCoroutine(AnimateVertexColors());
+
         }
 
+        public void StartAnim()
+        {
+            StartCoroutine(AnimateVertexColors());
+        }
 
         void ON_TEXT_CHANGED(Object obj)
         {

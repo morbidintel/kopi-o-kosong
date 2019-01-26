@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,13 +14,16 @@ public class Customer : MonoBehaviour
 	public float timeRemaining;
 	public bool success;
 
-	[SerializeField]
+    public TextMeshPro tmp;
+
+    [SerializeField]
 	UnityEvent onComplete;
 
 	public void Init(Difficulty difficulty, float timeLimit)
 	{
 		incomplete = difficulty.GenerateDrinkList();
 		timeRemaining = timeLimit;
+
 	}
 
 	public bool SubmitDrink(Drink completedDrink)
@@ -54,4 +59,30 @@ public class Customer : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
+
+    public void RenderText()
+    {
+        List<string> incompleteDrinks = new List<string>();
+        List<string> completeDrinks = new List<string>();
+
+
+        foreach(Drink drink in incomplete)
+        {
+            incompleteDrinks.Add(drink.ToString());
+        }
+        string incompleteDrinksStr = "<b>" + string.Join(", ", incompleteDrinks.ToArray());
+        incompleteDrinksStr += "</b>";
+
+        foreach(Drink drink in fulfilled)
+        {
+            completeDrinks.Add(drink.ToString());
+        }
+        string completeDrinkStr = "<s>" + string.Join(", ", completeDrinks.ToArray());
+        completeDrinkStr += "</s>";
+
+        string text = "I would like a " + incompleteDrinksStr + completeDrinkStr;
+
+        tmp.text = text + ".";
+        tmp.GetComponentInParent<VertexJitter>().StartAnim();
+    }
 }
