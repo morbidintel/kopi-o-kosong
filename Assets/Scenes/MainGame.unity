@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641275, b: 0.5748174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,7 +160,7 @@ MonoBehaviour:
   timeRemaining: 0
   timeIncrement: 0
   restartDelay: 4
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1336925946}
   score: 0
 --- !u!114 &129733228
 MonoBehaviour:
@@ -2722,6 +2722,7 @@ MonoBehaviour:
   customerPrefab: {fileID: 2764932364143764410, guid: b27e5893fd536d04193b5fd40420acba,
     type: 3}
   finalDestination: {fileID: 1891860542}
+  gameController: {fileID: 129733225}
 --- !u!1 &1316485996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3209,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: '0
+
+'
 --- !u!222 &1336925947
 CanvasRenderer:
   m_ObjectHideFlags: 0

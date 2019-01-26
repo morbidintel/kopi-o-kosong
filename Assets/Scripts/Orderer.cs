@@ -11,9 +11,11 @@ public class Orderer : Singleton<Orderer>
 
     public GameObject customerPrefab;
     public GameObject finalDestination;
+    public GameObject gameController;
 
     private Difficulty difficulty;
     private Vector3 offset = new Vector3(1f, 0f, 0f);
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,12 +68,12 @@ public class Orderer : Singleton<Orderer>
             }
             return;
         }
-
-        if (orders[0].SubmitDrink(drink))
+        Customer active = orders[0];
+        if (active.SubmitDrink(drink))
         {
-            Customer completedCust = orders[0];
-            completedCust.OnComplete();
-            completedCust.Leave();
+            gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
+            active.OnComplete();
+            active.Leave();
             ProcessQueue();
             return;
         }

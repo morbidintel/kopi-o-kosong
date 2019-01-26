@@ -13,6 +13,7 @@ public class GameController : Singleton<GameController>
     public float restartDelay = 4f;
     public Text scoreText;
     public int score;
+    private int oldScore;
     bool gameHasEnded;
     public Difficulty difficulty = new Difficulty(1);
 
@@ -47,12 +48,17 @@ public class GameController : Singleton<GameController>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void AddScore(){
-        
+    public void AddScore(int value)
+    {
+        score += value;
     }
 
     void UpdateScore() {
-        //scoreText.text = "Score: " + score.ToString();
+        if (score != oldScore)
+        {
+            oldScore++;
+            scoreText.GetComponent<Text>().text = oldScore.ToString();
+        }
     }
 
     public void AddTime() {
