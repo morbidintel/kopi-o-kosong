@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Drink : MonoBehaviour
 {
-    enum SugarLevel {KOSONG, SIEW_DAI, NORMAL};
+    enum SugarLevel {KOSONG, SIEW_DAI, NORMAL, SWEET_AF};
     enum DrinkType {TEH, KOPI};
     enum MilkType {O, C, NORMAL}
     enum IceLevel {NONE, PENG}
 
-    public SugarLevel sugarLevel;
+    public int sugarLevel;
     public DrinkType drinkType;
     public MilkType milkType;
     public IceLevel iceLevel;
@@ -18,24 +18,45 @@ public class Drink : MonoBehaviour
     public Drink() {}
 
     // Initialise with specific types. For orders.
-    public Drink(DrinkType drinkType, MilkType milkType, SugarLevel sugarLevel, IceLevel iceLevel) {
+    public Drink(DrinkType drinkType, MilkType milkType, int sugarLevel, IceLevel iceLevel) 
+    {
         this.drinkType = drinkType;
         this.milkType = milkType;
         this.sugarLevel = sugarLevel;
         this.iceLevel = iceLevel;
     }
 
-    // Print name of the drink.
-    public ToString() 
+    public void AddDrink() 
     {
-        return printEnum(drinkType.ToString()) + 
-            printEnum(milkType.ToString()) +
-            printEnum(sugarLevel.ToString()) +
-            printEnum(iceLevel.ToString());
+
+    }
+
+    public void AddMilk() 
+    {
+
+    }
+
+    public void AddSugar() 
+    {
+
+    }
+
+    public void AddIce() 
+    {
+
+    }
+
+    // Print name of the drink.
+    public void ToString() 
+    {
+        return this.PrintEnum(this.drinkType.ToString()) + 
+            this.PrintEnum(this.milkType.ToString()) +
+            this.PrintEnum(this.GetSugarLevel(this.SugarLevel.ToString())) +
+            this.PrintEnum(this.iceLevel.ToString());
     }
 
     // Check equivalency of 2 drinks.
-    public Equals(Drink other) 
+    public void Equals(Drink other) 
     {
         return other.drinkType == this.drinkType &&
             other.milkType == this.milkType &&
@@ -43,12 +64,27 @@ public class Drink : MonoBehaviour
             other.iceLevel == this.iceLevel;
     }
 
-    private string printEnum(string value) 
+    private string PrintEnum(string value) 
     {
-        if (value.Equals("NORMAL") || value.Equals("NONE")) {
+        if (value.Equals("NORMAL") || value.Equals("NONE"))
+        {
             return "";
-        } else {
+        } 
+        else 
+        {
             return value.Replace("_", " ");
+        }
+    }
+
+    private SugarLevel GetSugarLevel(int sugarLevel)
+    {
+        if (Enum.IsDefined(typeof(SugarLevel), sugarLevel)) 
+        {  
+            return (SugarLevel) sugarLevel;
+        }
+        else 
+        {
+            return SugarLevel.SWEET_AF;
         }
     }
 }
