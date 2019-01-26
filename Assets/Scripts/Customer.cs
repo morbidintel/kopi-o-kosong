@@ -19,6 +19,14 @@ public class Customer : MonoBehaviour
     [SerializeField]
 	UnityEvent onComplete;
 
+	SpriteRenderer spriteRenderer;
+	public Sprite[] characters = new Sprite[5];
+	public void Start() {
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		int index = Random.Range(0, 5);
+		spriteRenderer.sprite = characters[index];
+	}
+
 	public void Init(Difficulty difficulty, float timeLimit)
 	{
 		incomplete = difficulty.GenerateDrinkList();

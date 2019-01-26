@@ -412,6 +412,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  characters:
+  - {fileID: 21300000, guid: dcc6324bc984f754fbf59b342f1b941b, type: 3}
+  - {fileID: 21300000, guid: 51a044879f4dc0d4caf02e50e42755c7, type: 3}
+  - {fileID: 21300000, guid: 5dcbada49bf88b74a91cbe581572a7f0, type: 3}
+  - {fileID: 21300000, guid: 7330618d7e39e6d4a8c69a527e741104, type: 3}
+  - {fileID: 21300000, guid: 6035836ba026fba468e79d4518cda5fd, type: 3}
 --- !u!1 &7140390863599983641
 GameObject:
   m_ObjectHideFlags: 0
