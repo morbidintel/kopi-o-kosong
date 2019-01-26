@@ -13,6 +13,7 @@ public class Customer : MonoBehaviour
 	public List<Drink> fulfilled = new List<Drink>();
 	public float timeRemaining;
 	public bool success;
+    public bool isActiveCustomer;
 
     public TextMeshPro tmp;
 
@@ -31,8 +32,8 @@ public class Customer : MonoBehaviour
 	{
 		incomplete = difficulty.GenerateDrinkList();
 		timeRemaining = timeLimit;
-
-	}
+        transform.GetComponent<SpriteRenderer>().sortingOrder = 999 - transform.GetSiblingIndex() * 3; // it's 5 am. fuck it.
+    }
 
 	public bool SubmitDrink(Drink completedDrink)
 	{
@@ -79,6 +80,9 @@ public class Customer : MonoBehaviour
 		// Do not render text when it is not the object in front
 		if (transform.GetSiblingIndex() != 0)
 			return;
+
+        transform.GetComponent<SpriteRenderer>().sortingOrder = 999;
+        tmp.sortingOrder = 999;
 
         List<string> incompleteDrinks = new List<string>();
         List<string> completeDrinks = new List<string>();

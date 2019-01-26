@@ -85,7 +85,7 @@ public class Orderer : Singleton<Orderer>
 
 	void GenerateOrder(Difficulty stageDifficulty)
 	{
-		Customer cust = Instantiate(customerPrefab, transform).GetComponent<Customer>();
+		Customer cust = Instantiate(customerPrefab, new Vector3(20f, 0f, 0f), Quaternion.identity, transform).GetComponent<Customer>();
 		cust.Init(difficulty, 60.0f);
 		orders.Add(cust);
 		//orders.Add(new Customer(stageDifficulty, 60.0f));
