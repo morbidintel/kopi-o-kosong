@@ -57,6 +57,10 @@ public class PlayerDrink : Singleton<PlayerDrink>
             {
                 milk.SetActive(true);
             }
+            else
+            {
+                milk.SetActive(false);
+            }
             return;
         }
         milk.SetActive(false);
