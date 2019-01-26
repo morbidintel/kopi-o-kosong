@@ -35,3 +35,5 @@ sysinfo.txt
 /.project
 .collabignore
 /maps
+Assets/Scripts/GameController.cs.meta
+Assets/Scripts/Orderer.cs.meta

@@ -26,6 +26,18 @@ public class Orderer : MonoBehaviour
         }
     }
 
+    public bool checkAndScoreDrink(Drink drink)
+    {
+        foreach(Drink order in orders)
+        {
+            if (order.Equals(drink))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     void GenerateOrder(int stage)
     {
         var drinkList = drinkTypes.getDrinkList(stage);
