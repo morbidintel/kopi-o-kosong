@@ -7,8 +7,9 @@ public class InputController : MonoBehaviour
     public GameObject unker;
     public PlayerDrink playerDrink;
     private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
+    [SerializeField] private GameObject pausePanel;
 
-	[Header("Ingredient Objects")]
+    [Header("Ingredient Objects")]
 	public GameObject kopi;
 	public GameObject teh;
 	public GameObject sugar;
@@ -29,12 +30,24 @@ public class InputController : MonoBehaviour
         playerDrink = unker.GetComponent("PlayerDrink") as PlayerDrink;
         gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
+        pausePanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!pausePanel.activeInHierarchy)
+            {
+                Pause();
+            }
+            else if (pausePanel.activeInHierarchy)
+            {
+                Continue();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Empty Cup
             playerDrink.empty();
@@ -102,10 +115,23 @@ public class InputController : MonoBehaviour
             Debug.Log("Enter Key");
         }
     }
+
     public void playClip(AudioClip audioClip)
     {
         audioSource.Stop();
         audioSource.clip = audioClip;
         audioSource.PlayOneShot(audioClip);
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    private void Continue()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
     }
 }
