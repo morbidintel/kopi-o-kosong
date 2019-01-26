@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewMonoBehaviour : MonoBehaviour
+public class InputController : MonoBehaviour
 {
     public GameObject unker;
     public PlayerDrink playerDrink;
