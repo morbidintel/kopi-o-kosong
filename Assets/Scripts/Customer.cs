@@ -16,7 +16,7 @@ public class Customer : MonoBehaviour
         this.timeRemaining = timeLimit;
     }
 
-    public bool SubmitDrink(Drink completedDrink) 
+    public bool SubmitDrink(Drink completedDrink)
     {
         foreach (Drink drink in incomplete)
         {
@@ -35,7 +35,8 @@ public class Customer : MonoBehaviour
         return (incomplete.Count == 0);
     }
 
-    void Update() {
+    void Update()
+    {
         this.timeRemaining -= Time.deltaTime;
     }
 }
