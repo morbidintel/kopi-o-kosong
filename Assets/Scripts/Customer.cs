@@ -30,6 +30,11 @@ public class Customer : MonoBehaviour
         return false;
     }
 
+    public bool completed()
+    {
+        return (incomplete.Count == 0);
+    }
+
     void Update() {
         this.timeRemaining -= Time.deltaTime;
     }

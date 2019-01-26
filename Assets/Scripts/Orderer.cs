@@ -8,6 +8,7 @@ public class Orderer : MonoBehaviour
     private float t;
     private List<Customer> orders;
     private DrinkTypes drinkTypes;
+    private Difficulty difficulty;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,37 +30,32 @@ public class Orderer : MonoBehaviour
 
         if (Time.time < t)
         {
-            GenerateOrder(1);
+            GenerateOrder(difficulty);
             UpdateTimeForNextOrder();
         }
     }
 
-    public bool checkAndScoreDrink(Drink drink)
+    public void checkAndScoreDrink(Drink drink)
     {
-        foreach(Customer customer in orders)
+        foreach (Customer customer in orders)
         {
             if (customer.SubmitDrink(drink))
             {
-                
-                return true;
+                //check if completed and score
+                if (customer.completed())
+                {
+                    //SCORE!
+                }
+
+                return;
             }
         }
-        return false;
     }
 
-    void GenerateOrder(int stage)
+    void GenerateOrder(Difficulty stageDifficulty)
     {
-        var drinkList = drinkTypes.getDrinkList(stage);
-        var drinkFormula = drinkList[Random.Range(0, drinkList.Count)];
-        orders.Add(new Customer(
-            new Drink(
-                drinkFormula[0],
-                drinkFormula[1],
-                drinkFormula[2],
-                drinkFormula[3],
-                drinkFormula[4],
-                drinkFormula[5]
-            ), 60.0f));
+        //todo: fix this
+        orders.Add(new Customer(stageDifficulty, 60.0f));
     }
 
     void UpdateTimeForNextOrder()
