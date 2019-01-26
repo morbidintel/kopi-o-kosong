@@ -26,8 +26,11 @@ public class ProgressBar : MonoBehaviour
 		if (progress >= 0.5f) bar.GetComponent<SpriteRenderer>().color = new Color((1.0f - progress) * 2.0f, 1.0f, 0.0f, 1.0f);
 		else bar.GetComponent<SpriteRenderer>().color = new Color(1.0f, progress * 2.0f, 0.0f, 1.0f);
 
-
-		holder.transform.localScale = new Vector3(originalScaleX * progress, 
-			holder.transform.localScale.y, holder.transform.localScale.z);
+		if (progress <= 0.0f)
+			holder.transform.localScale = new Vector3(0.0f, 
+				holder.transform.localScale.y, holder.transform.localScale.z);
+		else 
+			holder.transform.localScale = new Vector3(originalScaleX * progress, 
+				holder.transform.localScale.y, holder.transform.localScale.z);
 	}
 }
