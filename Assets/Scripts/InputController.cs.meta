@@ -3,7 +3,20 @@ guid: cd61a06f7d1627243a4b87d43f9c5724
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - unker: {instanceID: 0}
+  - playerDrink: {instanceID: 0}
+  - kopi: {instanceID: 0}
+  - teh: {instanceID: 0}
+  - sugar: {instanceID: 0}
+  - condensed: {instanceID: 0}
+  - evaporated: {instanceID: 0}
+  - ice: {instanceID: 0}
+  - coffeeAndTeaClip: {fileID: 8300000, guid: 0fcfe3e5284af42b58bfa94dbba3a257, type: 3}
+  - milkClip: {fileID: 8300000, guid: b775d4c6928f14de28455c3e731f16e6, type: 3}
+  - sugarClip: {fileID: 8300000, guid: fb75fd80b31734d9cbefad7be8e3285c, type: 3}
+  - iceClip: {fileID: 8300000, guid: c20e0da3015e742a78593011466f1baa, type: 3}
+  - serveClip: {fileID: 8300000, guid: 86dbf9ffbf818416e8e60f9fa2a7c589, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
