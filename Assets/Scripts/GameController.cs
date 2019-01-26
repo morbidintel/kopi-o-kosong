@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public const float maxTimeRemaining = 60f;
     public float timeRemaining;
+    public float timeIncrement;
+    public float restartDelay = 4f;
     public Text scoreText;
     public int score;
+    bool gameHasEnded;
 
     void Start()
     {
@@ -26,12 +31,29 @@ public class GameController : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over");
-        timeRemaining = 0;
-        UpdateScore();
+        if (!gameHasEnded) {
+            gameHasEnded = true;
+            Debug.Log("Game Over");
+            Invoke("Restart", restartDelay);
+            UpdateScore();
+            Restart();
+        }
+        
+    }
+
+    void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void AddScore(){
+        
     }
 
     void UpdateScore() {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void AddTime() {
+        timeRemaining = Mathf.Min(timeRemaining += timeIncrement, maxTimeRemaining);
     }
 }

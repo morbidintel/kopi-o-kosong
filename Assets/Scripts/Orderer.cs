@@ -8,7 +8,6 @@ public class Orderer : MonoBehaviour
     private float t;
     private List<Drink> orders;
     private DrinkTypes drinkTypes;
-    public GameObject cup;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +31,7 @@ public class Orderer : MonoBehaviour
         {
             if (order.Equals(drink))
             {
+                
                 return true;
             }
         }
