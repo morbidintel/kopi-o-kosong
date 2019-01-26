@@ -9,7 +9,9 @@ public class InputController : MonoBehaviour
 	private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
 	[SerializeField] private GameObject pausePanel;
 
-	[Header("Ingredient Objects")]
+    public GameObject cup;
+
+    [Header("Ingredient Objects")]
 	public GameObject kopi;
 	public GameObject teh;
 	public GameObject sugarSpoon;
@@ -49,7 +51,7 @@ public class InputController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			// Empty Cup
-			playerDrink.empty();
+			playerDrink.Empty();
 			Debug.Log("Escape pressed");
 		}
 		else if (Input.GetKeyDown(KeyCode.Q))
@@ -127,10 +129,11 @@ public class InputController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Space))
 		{
 			// Serve Cup
-			playerDrink.serve();
+			playerDrink.Serve();
 			playClip(serveClip);
 			Debug.Log("Enter Key");
 		}
+        playerDrink.RenderDrink();
 	}
 
 	public void playClip(AudioClip audioClip)

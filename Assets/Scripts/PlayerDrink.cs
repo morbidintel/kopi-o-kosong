@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Gamelogic.Extensions;
+using UnityEngine.UI;
 
 public class PlayerDrink : Singleton<PlayerDrink>
 {
     public Drink drink;
 
-    [SerializeField]
-    SpriteRenderer sprite;
+    public GameObject cMilk;
+    public GameObject liquid;
+    public GameObject ice;
+    public GameObject milk;
+
+    private Color tehColor = new Color(255, 194, 70);
+    private Color kopiColor = new Color(145, 124, 72);
+    private Color tehWithMilkColor = new Color(202, 148, 78);
+    private Color kopiWithMilkColor = new Color(132, 87, 48);
 
     // Use this for initialization
     void Start()
@@ -21,44 +29,68 @@ public class PlayerDrink : Singleton<PlayerDrink>
 
     }
 
-    public void empty()
+    public void Empty()
     {
         drink = new Drink();
     }
 
-    public void serve()
+    public void Serve()
     {
         //scoring logic;
         Orderer.Instance.checkAndScoreDrink(drink);
         drink = new Drink();
     }
 
-    void renderDrink()
+    public void RenderDrink()
     {
-        bool isKopi = drink.drinkKopi > 0;
-        bool isTeh = drink.drinkTeh > 0;
-        bool hasMilk = drink.milkCondensed == 1 || drink.milkEvaporated == 1;
-        bool hasIce = drink.iceLevel > 0;
+        DrawLiquid(drink);
+        DrawCMilk(drink);
+        DrawIce(drink);
+    }
 
-        if (isKopi)
+    private void DrawLiquid(Drink drink)
+    {
+        if (drink.drinkKopi + drink.drinkTeh == 0)
         {
-            sprite.color = new Color(78f, 50f, 41f); 
+            liquid.SetActive(false);
+            if (drink.milkEvaporated > 0)
+            {
+                milk.SetActive(true);
+            }
+            return;
         }
-        else if (isTeh)
+        milk.SetActive(false);
+        liquid.SetActive(true);
+
+        var img = liquid.GetComponent<Image>();
+        if (drink.drinkKopi >= 1)
         {
-            sprite.color = new Color(122f, 47f, 24f); 
-        }
-        if (hasMilk)
-        {
-            if (isKopi) {
-                sprite.color = new Color(132f, 87f, 48f);
-            } else if (isTeh) {
-                sprite.color = new Color(202f, 148f, 78f);
+
+            img.color = kopiColor;
+            if (drink.milkEvaporated > 0)
+            {
+                img.color = kopiWithMilkColor;
             }
         }
-        if (hasIce)
+        else if (drink.drinkTeh >= 1)
         {
-            // Add ice
+            img.color = tehColor;
+            if (drink.milkEvaporated > 0)
+            {
+                img.color = tehWithMilkColor;
+            }
         }
     }
+
+    private void DrawCMilk(Drink drink)
+    {
+        cMilk.SetActive(drink.milkCondensed > 0);
+
+    }
+
+    private void DrawIce(Drink drink)
+    {
+        ice.SetActive(drink.iceLevel > 0);
+    }
+
 }
