@@ -5,12 +5,12 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<Drink> incomplete;
-    public List<Drink> fulfilled;
+    public List<Drink> incomplete = new List<Drink>();
+    public List<Drink> fulfilled = new List<Drink>();
     public float timeRemaining;
     public bool success;
 
-    public Customer(Difficulty difficulty, float timeLimit)
+    public void Init(Difficulty difficulty, float timeLimit)
     {
         this.incomplete = difficulty.GenerateDrinkList();
         this.timeRemaining = timeLimit;

@@ -50,7 +50,7 @@ public class Difficulty : MonoBehaviour
         List<Drink> orders = new List<Drink>();
         for (int i=0; i<maxOrderSize; i++)
         {
-            int[] drinkFormula = DrinkTypes.drinkTypes[availableDrinks[Random.Range(0, availableDrinks.Count - 1)]];
+            int[] drinkFormula = DrinkTypes.Types[availableDrinks[Random.Range(0, availableDrinks.Count - 1)]];
             orders.Add(new Drink(
                 drinkFormula[0],
                 drinkFormula[1],

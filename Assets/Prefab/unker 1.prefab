@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2764932364143764412}
   - component: {fileID: 2764932364143764413}
   - component: {fileID: 2764932364143764415}
+  - component: {fileID: 793109760495552659}
   m_Layer: 0
   m_Name: unker 1
   m_TagString: Untagged
@@ -233,6 +234,22 @@ MonoBehaviour:
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
   lastSrcPosition: {x: 13.91, y: 0.7, z: 4.1869125}
   wpsDropdown: 0
+--- !u!114 &793109760495552659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764932364143764410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304188991b127664ba5ea7517ac0c7f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incomplete: []
+  fulfilled: []
+  timeRemaining: 0
+  success: 0
 --- !u!1 &8899317804172386303
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class InputController : MonoBehaviour
             playerDrink.drink.AddIce();
             Debug.Log("Y");
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             // Empty Cup
             playerDrink.serve();

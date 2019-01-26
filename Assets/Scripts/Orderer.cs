@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Orderer : MonoBehaviour
 {
-    private float t;
-    private float t_auntie;
-    private List<Customer> orders;
+    private List<Customer> orders = new List<Customer>();
     private Auntie auntie;
 
-    private Difficulty difficulty;
+    public GameObject customerPrefab;
+
+    private Difficulty difficulty = new Difficulty(1);
 
     // Start is called before the first frame update
     void Start()
     {
-        t = Time.time + 60;
-        t_auntie = Time.time + 15;
+        StartCoroutine(AuntieCoroutine());
+        StartCoroutine(OrderCoroutine());
     }
 
     // Update is called once per frame
@@ -29,17 +29,23 @@ public class Orderer : MonoBehaviour
                 //@todo: penalty
             }
         }
+    }
 
-        if (Time.time < t)
+    IEnumerator AuntieCoroutine()
+    {
+        while(true)
         {
-            GenerateOrder(difficulty);
-            UpdateTimeForNextOrder();
-        }
-
-        if (Time.time < t_auntie)
-        {
+            yield return new WaitForSeconds(5);
             GenerateAuntie(difficulty);
-            UpdateTimeForNextAuntie();
+        }
+    }
+
+    IEnumerator OrderCoroutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+            GenerateOrder(difficulty);
         }
     }
 
@@ -73,22 +79,15 @@ public class Orderer : MonoBehaviour
 
     void GenerateOrder(Difficulty stageDifficulty)
     {
-        orders.Add(new Customer(stageDifficulty, 60.0f));
+        Customer cust = Instantiate(customerPrefab).GetComponent<Customer>();
+        cust.Init(difficulty, 60.0f);
+        orders.Add(cust);
+        //orders.Add(new Customer(stageDifficulty, 60.0f));
     }
 
     void GenerateAuntie(Difficulty stageDifficulty)
     {
         var threshold = 0.15f * stageDifficulty.stageDifficulty - 0.15f;
         if (Random.Range(0f, 1f) < threshold) auntie = new Auntie(stageDifficulty, 10.0f);
-    }
-
-    void UpdateTimeForNextOrder()
-    {
-        t = Time.time + 30 + Random.value * 30; //30 to 60 seconds.
-    }
-
-    void UpdateTimeForNextAuntie()
-    {
-        t_auntie = Time.time + 15;
     }
 }
