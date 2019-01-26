@@ -42,25 +42,25 @@ public class InputController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            playerDrink.drink.AddSugar();
-            playClip(sugarClip);
-            Debug.Log("Q");
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
             playerDrink.drink.AddDrinkKopi();
             playClip(coffeeAndTeaClip);
 			DOTween.Play(kopi);
 			kopi.GetComponent<DOTweenPath>().DOPlay();
-            Debug.Log("W");
+            Debug.Log("Q");
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             playerDrink.drink.AddDrinkTeh();
             playClip(coffeeAndTeaClip);
 			DOTween.Play(teh);
 			teh.GetComponent<DOTweenPath>().DOPlay();
-			Debug.Log("E");
+			Debug.Log("W");
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            playerDrink.drink.AddSugar();
+            playClip(sugarClip);
+            Debug.Log("E");
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
@@ -94,6 +94,7 @@ public class InputController : MonoBehaviour
     }
     public void playClip(AudioClip audioClip)
     {
+        audioSource.Stop();
         audioSource.clip = audioClip;
         audioSource.PlayOneShot(audioClip);
     }
