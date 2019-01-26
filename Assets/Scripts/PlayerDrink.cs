@@ -31,13 +31,15 @@ public class PlayerDrink : Singleton<PlayerDrink>
 
     public void Empty()
     {
+		ice.gameObject.SetActive(false);
         drink = new Drink();
     }
 
     public void Serve()
     {
-        //scoring logic;
-        Orderer.Instance.checkAndScoreDrink(drink);
+		//scoring logic;
+		ice.gameObject.SetActive(false);
+		Orderer.Instance.checkAndScoreDrink(drink);
         drink = new Drink();
     }
 
