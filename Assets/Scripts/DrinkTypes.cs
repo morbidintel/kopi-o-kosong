@@ -80,6 +80,8 @@ public class DrinkTypes : MonoBehaviour
         stage3.Add("kopi o gau");
         stage3.Add("kopi kosong");
         stage3.Add("teh kosong");
+        stage3.Add("kopi o kosong");
+        stage3.Add("teh o kosong");
 
         stage4 = new List<string>(stage3);
         //todo: stage 4 and 5
