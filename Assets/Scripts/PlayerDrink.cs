@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Gamelogic.Extensions;
 
-public class PlayerDrink : MonoBehaviour
+public class PlayerDrink : Singleton<PlayerDrink>
 {
-    public Orderer orderer;
     public Drink drink;
 
     [SerializeField]
@@ -29,7 +29,7 @@ public class PlayerDrink : MonoBehaviour
     public void serve()
     {
         //scoring logic;
-        orderer.checkAndScoreDrink(drink);
+        Orderer.Instance.checkAndScoreDrink(drink);
         drink = new Drink();
     }
 
