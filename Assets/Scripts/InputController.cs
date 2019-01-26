@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
+using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class InputController : MonoBehaviour
 	public GameObject sugar;
 	public GameObject condensed;
 	public GameObject evaporated;
-	public GameObject ice;
+	public GameObject iceCubes;
 
 	[Header("Audio Clips")]
     public AudioClip coffeeAndTeaClip;
@@ -45,7 +45,9 @@ public class InputController : MonoBehaviour
             playerDrink.drink.AddDrinkKopi();
             playClip(coffeeAndTeaClip);
 			DOTween.Play(kopi);
-			kopi.GetComponent<DOTweenPath>().DOPlay();
+			var path = kopi.GetComponent<DOTweenPath>();
+			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(kopi); });
+			path.DOPlay();
             Debug.Log("Q");
         }
         else if (Input.GetKeyDown(KeyCode.W))
@@ -53,7 +55,9 @@ public class InputController : MonoBehaviour
             playerDrink.drink.AddDrinkTeh();
             playClip(coffeeAndTeaClip);
 			DOTween.Play(teh);
-			teh.GetComponent<DOTweenPath>().DOPlay();
+			var path = teh.GetComponent<DOTweenPath>();
+			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(teh); });
+			path.DOPlay();
 			Debug.Log("W");
         }
         else if (Input.GetKeyDown(KeyCode.E))
@@ -67,7 +71,9 @@ public class InputController : MonoBehaviour
             playerDrink.drink.AddMilkCondensed();
             playClip(milkClip);
 			DOTween.Play(condensed);
-			condensed.GetComponent<DOTweenPath>().DOPlay();
+			var path = condensed.GetComponent<DOTweenPath>();
+			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(condensed); });
+			path.DOPlay();
 			Debug.Log("R");
         }
         else if (Input.GetKeyDown(KeyCode.T))
@@ -75,14 +81,17 @@ public class InputController : MonoBehaviour
             playerDrink.drink.AddMilkEvaporated();
             playClip(milkClip);
 			DOTween.Play(evaporated);
-			evaporated.GetComponent<DOTweenPath>().DOPlay();
+			var path = evaporated.GetComponent<DOTweenPath>();
+			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(evaporated); });
+			path.DOPlay();
 			Debug.Log("T");
         }
         else if (Input.GetKeyDown(KeyCode.Y))
         {
             playerDrink.drink.AddIce();
             playClip(iceClip);
-            Debug.Log("Y");
+			iceCubes.GetComponent<DOTweenPath>().DOPlay();
+			Debug.Log("Y");
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
