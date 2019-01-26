@@ -5,19 +5,29 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Drink drink;
+    public List<Drink> incomplete;
+    public List<Drink> fulfilled;
     public float timeRemaining;
     public bool success;
 
-    public Customer(Drink desiredDrink, float timeLimit)
+    public Customer(Difficulty difficulty, float timeLimit)
     {
-        this.drink = desiredDrink;
+        this.incomplete = difficulty.GenerateDrinkList();
         this.timeRemaining = timeLimit;
     }
 
     public bool SubmitDrink(Drink completedDrink) 
     {
-        return this.drink.Equals(completedDrink);
+        foreach (Drink drink in incomplete)
+        {
+            if (drink.Equals(completedDrink))
+            {
+                incomplete.Remove(drink);
+                fulfilled.Add(drink);
+                return true;
+            }
+        }
+        return false;
     }
 
     void Update() {
