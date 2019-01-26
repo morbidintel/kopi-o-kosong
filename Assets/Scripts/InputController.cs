@@ -52,7 +52,7 @@ public class InputController : MonoBehaviour
 		{
 			// Empty Cup
 			playerDrink.Empty();
-			Debug.Log("Escape pressed");
+			Debug.Log("empty cup");
 		}
 		else if (Input.GetKeyDown(KeyCode.Q))
 		{
@@ -61,10 +61,9 @@ public class InputController : MonoBehaviour
 
 			playerDrink.drink.AddDrinkKopi();
 			playClip(coffeeAndTeaClip);
-			DOTween.Play(kopi);
-			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(kopi); });
+			DOTween.Restart(kopi);
 			path.DORestart();
-			Debug.Log("Q");
+			Debug.Log("kopi");
 		}
 		else if (Input.GetKeyDown(KeyCode.W))
 		{
@@ -73,22 +72,21 @@ public class InputController : MonoBehaviour
 
 			playerDrink.drink.AddDrinkTeh();
 			playClip(coffeeAndTeaClip);
-			DOTween.Play(teh);
-			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(teh); });
+			DOTween.Restart(teh);
 			path.DORestart();
-			Debug.Log("W");
+			Debug.Log("teh");
 		}
 		else if (Input.GetKeyDown(KeyCode.E))
 		{
 			var path = sugarSpoon.GetComponent<DOTweenPath>();
-			if (path.GetTween().IsPlaying()) return; // don't register if anim is playing
+			if (sugarSpoon.activeSelf && path.GetTween().IsPlaying()) return; // don't register if anim is playing
 
 			playerDrink.drink.AddSugar();
 			playClip(sugarClip);
-			DOTween.Play(sugarSpoon);
-			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(sugarSpoon); });
+			sugarSpoon.SetActive(true);
+			DOTween.Restart(sugarSpoon);
 			path.DORestart();
-			Debug.Log("E");
+			Debug.Log("sugar");
 		}
 		else if (Input.GetKeyDown(KeyCode.R))
 		{
@@ -97,10 +95,9 @@ public class InputController : MonoBehaviour
 
 			playerDrink.drink.AddMilkCondensed();
 			playClip(milkClip);
-			DOTween.Play(condensed);
-			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(condensed); });
+			DOTween.Restart(condensed);
 			path.DORestart();
-			Debug.Log("R");
+			Debug.Log("condensed milk");
 		}
 		else if (Input.GetKeyDown(KeyCode.T))
 		{
@@ -109,10 +106,9 @@ public class InputController : MonoBehaviour
 
 			playerDrink.drink.AddMilkEvaporated();
 			playClip(milkClip);
-			DOTween.Play(evaporated);
-			path.onComplete.AddListener(() => { path.DOPlayBackwards(); DOTween.PlayBackwards(evaporated); });
+			DOTween.Restart(evaporated);
 			path.DORestart();
-			Debug.Log("T");
+			Debug.Log("evaporated milk");
 		}
 		else if (Input.GetKeyDown(KeyCode.Y))
 		{
@@ -123,15 +119,15 @@ public class InputController : MonoBehaviour
 			playerDrink.drink.AddIce();
 			playClip(iceClip);
 			iceCubes.SetActive(true);
-			path.DOPlay();
-			Debug.Log("Y");
+			path.DORestart();
+			Debug.Log("ice");
 		}
 		else if (Input.GetKeyDown(KeyCode.Space))
 		{
 			// Serve Cup
 			playerDrink.Serve();
 			playClip(serveClip);
-			Debug.Log("Enter Key");
+			Debug.Log("serve drink");
 		}
         playerDrink.RenderDrink();
 	}

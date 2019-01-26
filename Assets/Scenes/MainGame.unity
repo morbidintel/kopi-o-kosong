@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641275, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -347,8 +347,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loopType: 0
-  loops: 1
+  loopType: 1
+  loops: 2
   id: 
   isRelative: 0
   isFrom: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 1
+  hasOnComplete: 0
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -457,9 +457,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loops: 1
+  loops: 2
   id: 
-  loopType: 0
+  loopType: 1
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -1512,8 +1512,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loopType: 0
-  loops: 1
+  loopType: 1
+  loops: 2
   id: 
   isRelative: 0
   isFrom: 0
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 1
+  hasOnComplete: 0
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -1622,9 +1622,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loops: 1
+  loops: 2
   id: 
-  loopType: 0
+  loopType: 1
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -1878,17 +1878,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1013079429}
-        m_MethodName: DORewind
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTweenCreated:
@@ -1946,7 +1935,7 @@ MonoBehaviour:
   - {x: 3.161395, y: 1.1999912, z: 0}
   - {x: 0.7798462, y: 1.4719975, z: 0}
   - {x: -0.5405662, y: 1.3403687, z: 0}
-  - {x: -0.9843045, y: 0.2452175, z: 0}
+  - {x: -0.9336009, y: 0.1176904, z: 0}
   fullWps: []
   path:
     wpLengths:
@@ -1954,8 +1943,8 @@ MonoBehaviour:
     - 3.9390666
     - 2.8593328
     - 2.40009
-    - 1.3490995
-    - 1.2022256
+    - 1.3538203
+    - 1.3053181
     type: 1
     subdivisionsXSegment: 10
     subdivisions: 60
@@ -1965,13 +1954,13 @@ MonoBehaviour:
     - {x: 3.161395, y: 1.1999912, z: 0}
     - {x: 0.7798462, y: 1.4719975, z: 0}
     - {x: -0.5405662, y: 1.3403687, z: 0}
-    - {x: -0.9843045, y: 0.2452175, z: 0}
+    - {x: -0.9336009, y: 0.1176904, z: 0}
     controlPoints:
     - a: {x: 5.8280706, y: 0.35481983, z: 0}
       b: {x: 0, y: 0, z: 0}
-    - a: {x: -1.4280428, y: -0.8499337, z: 0}
+    - a: {x: -1.3266356, y: -1.1049879, z: 0}
       b: {x: 0, y: 0, z: 0}
-    length: 11.750766
+    length: 11.858623
     isFinalized: 1
     timesTable:
     - 0.016666668
@@ -2071,30 +2060,30 @@ MonoBehaviour:
     - 8.866592
     - 9.038622
     - 9.199165
-    - 9.349271
-    - 9.49106
-    - 9.62481
-    - 9.750812
-    - 9.869394
-    - 9.980963
-    - 10.086045
-    - 10.185346
-    - 10.279811
-    - 10.370688
-    - 10.459566
-    - 10.548366
-    - 10.637185
-    - 10.726878
-    - 10.819492
-    - 10.915942
-    - 11.016275
-    - 11.119946
-    - 11.226022
-    - 11.333354
-    - 11.440685
-    - 11.546762
-    - 11.650433
-    - 11.750766
+    - 9.34945
+    - 9.491716
+    - 9.626138
+    - 9.75289
+    - 9.872187
+    - 9.984327
+    - 10.089762
+    - 10.189169
+    - 10.283551
+    - 10.374328
+    - 10.463396
+    - 10.553115
+    - 10.644276
+    - 10.738255
+    - 10.837053
+    - 10.9413395
+    - 11.050836
+    - 11.164654
+    - 11.281529
+    - 11.399982
+    - 11.518435
+    - 11.635309
+    - 11.749127
+    - 11.858623
   inspectorMode: 0
   pathType: 1
   handlesType: 0
@@ -2772,7 +2761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1316485997
 Transform:
   m_ObjectHideFlags: 0
@@ -2829,7 +2818,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1316485996}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTweenCreated:
@@ -2864,9 +2864,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loops: 1
+  loops: 2
   id: 
-  loopType: 0
+  loopType: 1
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -3038,7 +3038,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300006, guid: 1179af81ec8b246c19e72583dc7a3c22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c4c3f550af2e498097d510e46143730, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3126,8 +3126,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loopType: 0
-  loops: 1
+  loopType: 1
+  loops: 2
   id: 
   isRelative: 0
   isFrom: 0
@@ -3544,7 +3544,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 1
+  hasOnComplete: 0
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -3603,9 +3603,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loops: 1
+  loops: 2
   id: 
-  loopType: 0
+  loopType: 1
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -3817,8 +3817,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loopType: 0
-  loops: 1
+  loopType: 1
+  loops: 2
   id: 
   isRelative: 0
   isFrom: 0
@@ -4150,7 +4150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2131778810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4167,7 +4167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9, y: -11.7}
+  m_AnchoredPosition: {x: 2, y: -5}
   m_SizeDelta: {x: 46.25, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131778811
@@ -4216,7 +4216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2131778809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -333801856, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   updateType: 0
@@ -4284,63 +4284,39 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  loopType: 0
   loops: 1
   id: 
-  loopType: 0
-  orientType: 0
-  lookAtTransform: {fileID: 0}
-  lookAtPosition: {x: 0, y: 0, z: 0}
-  lookAhead: 0.01
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  isActive: 1
+  isValid: 1
+  target: {fileID: 2131778810}
+  animationType: 9
+  targetType: 5
+  forcedTargetType: 0
   autoPlay: 1
-  autoKill: 1
-  relative: 0
-  isLocal: 0
-  isClosedPath: 0
-  pathResolution: 10
-  pathMode: 1
-  lockRotation: 0
-  assignForwardAndUp: 0
-  forwardDirection: {x: 0, y: 0, z: 1}
-  upDirection: {x: 0, y: 1, z: 0}
-  wps:
-  - {x: -0.91056705, y: -0.27412423, z: -2.0014267}
-  - {x: -0.9050062, y: 0.38369334, z: -1.9994687}
-  - {x: -0.9078195, y: -0.040893063, z: -2.0007339}
-  fullWps: []
-  path:
-    wpLengths:
-    - 0
-    - 0.21947452
-    - 0.657844
-    - 0.42459762
-    type: 0
-    subdivisionsXSegment: 10
-    subdivisions: 40
-    wps:
-    - {x: -0.9105538, y: -0.054650694, z: -2.0007682}
-    - {x: -0.91056705, y: -0.27412423, z: -2.0014267}
-    - {x: -0.9050062, y: 0.38369334, z: -1.9994687}
-    - {x: -0.9078195, y: -0.040893063, z: -2.0007339}
-    controlPoints: []
-    length: 1.3019161
-    isFinalized: 1
-    timesTable:
-    - 0
-    - 0.16857809
-    - 0.67386717
-    - 1
-    lengthsTable: []
-  inspectorMode: 0
-  pathType: 0
-  handlesType: 0
-  livePreview: 1
-  handlesDrawMode: 0
-  perspectiveHandleSize: 0.5
-  showIndexes: 1
-  showWpLength: 0
-  pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: -0.9105538, y: -0.054650694, z: -2.0007682}
-  wpsDropdown: 0
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 0, y: 3, z: 0}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalFloat0: 1
+  optionalInt0: 7
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalString: 
 --- !u!114 &2131778814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4455,7 +4431,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 1
+  hasOnComplete: 0
   hasOnTweenCreated: 0
   onStart:
     m_PersistentCalls:
@@ -4525,9 +4501,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loops: 1
+  loops: 2
   id: 
-  loopType: 0
+  loopType: 1
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -4739,8 +4715,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  loopType: 0
-  loops: 1
+  loopType: 1
+  loops: 2
   id: 
   isRelative: 0
   isFrom: 0
