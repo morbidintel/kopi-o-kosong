@@ -1,18 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float timeRemaining;
+    public Text scoreText;
+    public int score;
+
     void Start()
     {
-        
+        timeRemaining = 60;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        UpdateScore();
+        timeRemaining -= Time.deltaTime;
+        if (timeRemaining < 0)
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Game Over");
+        timeRemaining = 0;
+    }
+
+    void UpdateScore() {
+        scoreText.text = "Score: " + score.ToString();
     }
 }
