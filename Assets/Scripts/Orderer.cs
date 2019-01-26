@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Gamelogic.Extensions;
 using UnityEngine;
+using System.Linq;
 
 public class Orderer : Singleton<Orderer>
 {
@@ -53,6 +54,7 @@ public class Orderer : Singleton<Orderer>
 
 	public void checkAndScoreDrink(Drink drink)
 	{
+		// Fill aunty's orders first!!!!
 		if (auntie != null)
 		{
 			if (auntie.SubmitDrink(drink))
@@ -63,20 +65,21 @@ public class Orderer : Singleton<Orderer>
 			return;
 		}
 
-		foreach (Customer customer in orders)
+		if (orders[0].SubmitDrink(drink)) 
 		{
-			if (customer.SubmitDrink(drink))
+			if(orders[0].IsCompleted()) 
 			{
-				//check if completed and score
-				if (customer.IsCompleted())
-				{
-					//SCORE!
-					customer.OnComplete();
-				}
+				// SCORE!
+				orders[0].OnComplete();
+				if (0 + 1 < orders.Count) orders[0 + 1].GetComponent<Customer>().ForceRenderText();
 
-				return;
+				orders.Remove(orders[0]);
 			}
+
+			return;
 		}
+
+		// If not fulfilled, do something
 		//todo: penalty
 	}
 

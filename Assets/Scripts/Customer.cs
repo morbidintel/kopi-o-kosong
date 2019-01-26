@@ -68,7 +68,43 @@ public class Customer : MonoBehaviour
 		Destroy(gameObject);
 	}
 
+	// To remove all the text when auntie spawns
+	public void ClearText() 
+	{
+		tmp.text = "";
+	}
+
     public void RenderText()
+    {
+		// Do not render text when it is not the object in front
+		if (transform.GetSiblingIndex() != 0)
+			return;
+
+        List<string> incompleteDrinks = new List<string>();
+        List<string> completeDrinks = new List<string>();
+
+
+        foreach(Drink drink in incomplete)
+        {
+            incompleteDrinks.Add(drink.ToString());
+        }
+        string incompleteDrinksStr = "<b>" + string.Join(", ", incompleteDrinks.ToArray());
+        incompleteDrinksStr += "</b>";
+
+        foreach(Drink drink in fulfilled)
+        {
+            completeDrinks.Add(drink.ToString());
+        }
+        string completeDrinkStr = "<s>" + string.Join(", ", completeDrinks.ToArray());
+        completeDrinkStr += "</s>";
+
+        string text = "I would like a " + incompleteDrinksStr + completeDrinkStr;
+
+        tmp.text = text + ".";
+        tmp.GetComponentInParent<VertexJitter>().StartAnim();
+    }
+
+	public void ForceRenderText()
     {
         List<string> incompleteDrinks = new List<string>();
         List<string> completeDrinks = new List<string>();
@@ -91,6 +127,7 @@ public class Customer : MonoBehaviour
         string text = "I would like a " + incompleteDrinksStr + completeDrinkStr;
 
         tmp.text = text + ".";
+		Debug.Log(tmp.text);
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 }
