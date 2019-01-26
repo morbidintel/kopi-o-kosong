@@ -6,7 +6,7 @@ public class Orderer : MonoBehaviour
 {
 
     private float t;
-    private List<Drink> orders;
+    private List<Customer> orders;
     private DrinkTypes drinkTypes;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,15 @@ public class Orderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach(Customer customer in orders)
+        {
+            if (customer.timeRemaining < 0.0f)
+            {
+                orders.Remove(customer);
+                //@todo: penalty
+            }
+        }
+
         if (Time.time < t)
         {
             GenerateOrder(1);
@@ -27,9 +36,9 @@ public class Orderer : MonoBehaviour
 
     public bool checkAndScoreDrink(Drink drink)
     {
-        foreach(Drink order in orders)
+        foreach(Customer customer in orders)
         {
-            if (order.Equals(drink))
+            if (customer.SubmitDrink(drink))
             {
                 
                 return true;
@@ -42,14 +51,15 @@ public class Orderer : MonoBehaviour
     {
         var drinkList = drinkTypes.getDrinkList(stage);
         var drinkFormula = drinkList[Random.Range(0, drinkList.Count)];
-        orders.Add(new Drink(
+        orders.Add(new Customer(
+            new Drink(
                 drinkFormula[0],
                 drinkFormula[1],
                 drinkFormula[2],
                 drinkFormula[3],
                 drinkFormula[4],
                 drinkFormula[5]
-            ));
+            ), 60.0f));
     }
 
     void UpdateTimeForNextOrder()
