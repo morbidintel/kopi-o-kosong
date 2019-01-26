@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Drink : MonoBehaviour
 {
-    enum SugarLevel {KOSONG, SIEW_DAI, NORMAL, SWEET_AF};
-    enum DrinkType {TEH, KOPI};
-    enum MilkType {O, C, NORMAL}
-    enum IceLevel {NONE, PENG}
+    public enum SugarLevel {KOSONG, SIEW_DAI, NORMAL, SWEET_AF};
+    public enum DrinkType {TEH, KOPI};
+    public enum MilkType {O, C, NORMAL}
+    public enum IceLevel {NONE, PENG}
 
     public int sugarLevel;
     public DrinkType drinkType;
