@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Game Over");
         timeRemaining = 0;
+        UpdateScore();
     }
 
     void UpdateScore() {
