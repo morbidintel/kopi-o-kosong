@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Orderer : MonoBehaviour
 {
+
+    private float t;
+
     public GameObject cup;
     // Start is called before the first frame update
     void Start()
     {
-        
+        t = Time.time + 60;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //should this be here? InputController
         if (Input.GetKeyDown(KeyCode.Escape)) {
             // Empty Cup
             Debug.Log("Escape pressed");
@@ -33,7 +37,16 @@ public class Orderer : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Return)) {
             // Empty Cup
             Debug.Log("Enter Key");
-        }
-        
+        }   
+    }
+
+    void GenerateOrder()
+    {
+        //Generate Order
+    }
+
+    void UpdateTimeForNextOrder()
+    {
+        t = Time.time + 30 + Random.value * 30 //30 to 60 seconds.
     }
 }
