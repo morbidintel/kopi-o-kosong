@@ -65,6 +65,13 @@ public class Customer : MonoBehaviour
     public void MoveTo(Vector3 location)
     {
         transform.DOMove(location, 1).OnComplete(RenderText);
+		int loops = Mathf.Abs(Mathf.FloorToInt(location.x - transform.position.x)) / 2;
+		if (loops > 2)
+		{
+			transform.DOMoveY(.5f, 1f / loops)
+					.SetLoops(loops - 2, LoopType.Yoyo)
+					.SetDelay(loops % 2 == 1 ? 1f / loops / 2f : 0);
+		}
     }
 
     public void RenderText()
@@ -72,7 +79,7 @@ public class Customer : MonoBehaviour
         // Do not render text when it is not the object in front
         if (transform.GetSiblingIndex() != 0)
             return;
-        setSpeech(true);
+        SetSpeech(true);
         ForceRenderText();
     }
 
@@ -80,7 +87,7 @@ public class Customer : MonoBehaviour
     {
         List<string> incompleteDrinks = new List<string>();
         List<string> completeDrinks = new List<string>();
-        setSpeech(true);
+        SetSpeech(true);
 
         tmp.text = "I would like a " + drinkWanted + ".";
 
@@ -88,7 +95,7 @@ public class Customer : MonoBehaviour
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 
-    private void setSpeech(bool val)
+    private void SetSpeech(bool val)
     {
         tmp.GetComponent<MeshRenderer>().enabled = val;
         speech.SetActive(val);
@@ -103,8 +110,8 @@ public class Customer : MonoBehaviour
 
     public void Leave()
     {
-        setSpeech(false);
-        transform.DOMove(new Vector3(-15, 0, 0), 1).OnComplete(Kill);
+        SetSpeech(false);
+        transform.DOMove(new Vector3(-10, 0, 0), 1).OnComplete(Kill);
     }
 
     private void Kill()

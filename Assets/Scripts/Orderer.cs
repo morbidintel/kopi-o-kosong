@@ -82,7 +82,7 @@ public class Orderer : Singleton<Orderer>
 
     void GenerateOrder(Difficulty stageDifficulty)
     {
-        Customer cust = Instantiate(customerPrefab, new Vector3(20f, 0f, 0f), Quaternion.identity, transform).GetComponent<Customer>();
+        Customer cust = Instantiate(customerPrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Customer>();
         cust.Init(difficulty, 60.0f);
         int positionInQueue = orders.Count();
         cust.SetLayerOrder(999 - positionInQueue);
