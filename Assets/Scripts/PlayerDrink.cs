@@ -45,7 +45,6 @@ public class PlayerDrink : Singleton<PlayerDrink>
     {
         DrawLiquid(drink);
         DrawCMilk(drink);
-        DrawIce(drink);
     }
 
     private void DrawLiquid(Drink drink)
@@ -91,10 +90,4 @@ public class PlayerDrink : Singleton<PlayerDrink>
         cMilk.SetActive(drink.milkCondensed > 0);
 
     }
-
-    private void DrawIce(Drink drink)
-    {
-        ice.SetActive(drink.iceLevel > 0);
-    }
-
 }
