@@ -37,8 +37,8 @@ public class Orderer : Singleton<Orderer>
     {
         while(true)
         {
-            yield return new WaitForSeconds(5);
             GenerateAuntie(difficulty);
+            yield return new WaitForSeconds(5);
         }
     }
 
@@ -46,8 +46,8 @@ public class Orderer : Singleton<Orderer>
     {
         while(true)
         {
-            yield return new WaitForSeconds(1);
             GenerateOrder(difficulty);
+            yield return new WaitForSeconds(10);
         }
     }
 
@@ -68,10 +68,10 @@ public class Orderer : Singleton<Orderer>
             if (customer.SubmitDrink(drink))
             {
                 //check if completed and score
-                if (customer.completed())
+                if (customer.IsCompleted())
                 {
                     //SCORE!
-                }
+                    customer.OnComplete();                }
 
                 return;
             }

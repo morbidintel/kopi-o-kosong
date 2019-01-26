@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
@@ -9,6 +10,7 @@ public class Customer : MonoBehaviour
     public List<Drink> fulfilled = new List<Drink>();
     public float timeRemaining;
     public bool success;
+    public DOTweenAnimation completeTween;
 
     public void Init(Difficulty difficulty, float timeLimit)
     {
@@ -30,13 +32,23 @@ public class Customer : MonoBehaviour
         return false;
     }
 
-    public bool completed()
+    public bool IsCompleted()
     {
         return (incomplete.Count == 0);
+    }
+
+    public void OnComplete()
+    {
+        completeTween.DOPlay();
     }
 
     void Update()
     {
         this.timeRemaining -= Time.deltaTime;
+    }
+
+    public void OnFinishTween()
+    {
+        Destroy(gameObject);
     }
 }
