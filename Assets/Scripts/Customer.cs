@@ -77,9 +77,10 @@ public class Customer : MonoBehaviour
         int loops = Mathf.Abs(Mathf.FloorToInt(location.x - transform.position.x)) / 2;
         if (loops > 2)
         {
+			bool isOdd = loops % 2 == 1;
             transform.DOMoveY(.5f, 1f / loops)
-                    .SetLoops(loops - 2, LoopType.Yoyo)
-                    .SetDelay(loops % 2 == 1 ? 1f / loops / 2f : 0);
+					.SetLoops(isOdd ? loops - 4 : loops - 2, LoopType.Yoyo)
+					.SetDelay(isOdd ? 1f / loops : 0);
         }
     }
 

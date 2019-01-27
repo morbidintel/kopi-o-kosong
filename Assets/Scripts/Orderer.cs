@@ -32,22 +32,19 @@ public class Orderer : Singleton<Orderer>
     // Update is called once per frame
     void Update()
     {
-        foreach (Customer customer in orders)
-        {
-            if (customer.timeRemaining < 0.0f)
-            {
-                orders.Remove(customer);
-                //@todo: penalty
-            }
-        }
-    }
+		int removed = orders.RemoveAll(c => c.timeRemaining < 0f);
+		if (removed > 0)
+		{
+			//@todo: penalty
+		}
+	}
 
     IEnumerator AuntieCoroutine()
     {
         while (true)
         {
             GenerateAuntie(difficulty);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 4);
         }
     }
 
@@ -56,7 +53,7 @@ public class Orderer : Singleton<Orderer>
         while (true)
         {
             GenerateOrder(difficulty);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 2);
         }
     }
 
