@@ -50,7 +50,7 @@ public class Orderer : Singleton<Orderer>
         {
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             Drink d = difficulty.GetDrink();
-            //if (auntie == null && auntieDelay) 
+            if (auntie == null && auntieDelay) 
             {
                 auntieShoutController.GetComponent<AuntieShoutController>().SpawnAuntieShout(d.ToString());
 
@@ -58,7 +58,6 @@ public class Orderer : Singleton<Orderer>
                 GenerateAuntie(difficulty, d);
             }
 
-            //if (auntie == null && auntieDelay) GenerateAuntie(difficulty);
             auntieDelay = true;
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 3 + 10);
         }
@@ -70,7 +69,7 @@ public class Orderer : Singleton<Orderer>
         {
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             GenerateOrder(difficulty);
-            yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 2);
+            yield return new WaitForSeconds((5 - difficulty.stageDifficulty)  + 6);
         }
     }
 
@@ -161,7 +160,7 @@ public class Orderer : Singleton<Orderer>
 		// Coroutine
 		// Generate auntie 3s later
 		Debug.Log("Auntie Generated");
-		var threshold = 0.5f * stageDifficulty.stageDifficulty + 1.25f;
+		var threshold = 0.5f * stageDifficulty.stageDifficulty + 0.25f;
 		if (Random.Range(0f, 1f) < threshold) 
 		{
 			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
