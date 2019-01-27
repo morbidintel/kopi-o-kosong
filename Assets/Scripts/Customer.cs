@@ -85,8 +85,6 @@ public class Customer : MonoBehaviour
 
     public void ForceRenderText()
     {
-        List<string> incompleteDrinks = new List<string>();
-        List<string> completeDrinks = new List<string>();
         SetSpeech(true);
 
         tmp.text = "I would like a " + drinkWanted + ".";
@@ -99,6 +97,10 @@ public class Customer : MonoBehaviour
     {
         tmp.GetComponent<MeshRenderer>().enabled = val;
         speech.SetActive(val);
+        if (val)
+        {
+            speech.GetComponent<DOTweenAnimation>().DOPlay();
+        }
     }
 
     public void SetLayerOrder(int i)
