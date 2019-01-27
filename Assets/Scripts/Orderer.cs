@@ -27,7 +27,7 @@ public class Orderer : Singleton<Orderer>
     // Start is called before the first frame update
     void Start()
     {
-		gameObject.AddComponent<AudioSource>();
+		gameObject.AddComponent<AudioSource>().volume = Settings.EffectsVolume;
 		auntie = null;
         StartCoroutine(AuntieCoroutine());
         StartCoroutine(OrderCoroutine());

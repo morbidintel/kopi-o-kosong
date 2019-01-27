@@ -32,6 +32,7 @@ public class InputController : MonoBehaviour
 		playerDrink = unker.GetComponent("PlayerDrink") as PlayerDrink;
 		gameObject.AddComponent<AudioSource>();
 		audioSource.playOnAwake = false;
+		audioSource.volume = Settings.EffectsVolume;
 	}
 
 	// Update is called once per frame
@@ -136,7 +137,6 @@ public class InputController : MonoBehaviour
 	{
 		audioSource.Stop();
 		audioSource.clip = audioClip;
-		audioSource.volume = Settings.EffectsVolume;
 		audioSource.PlayOneShot(audioClip);
 	}
 
