@@ -10,7 +10,9 @@ public class Orderer : Singleton<Orderer>
     private Auntie auntie;
 
     public GameObject customerPrefab;
+	public GameObject auntiePrefab;
     public GameObject finalDestination;
+	public GameObject auntieDestination;
     public GameObject gameController;
     private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
 	public AudioClip correctAudioClip;
@@ -25,6 +27,7 @@ public class Orderer : Singleton<Orderer>
     {
         difficulty = GameController.Instance.difficulty;
 		gameObject.AddComponent<AudioSource>();
+		auntie = null;
         StartCoroutine(AuntieCoroutine());
         StartCoroutine(OrderCoroutine());
     }
@@ -43,7 +46,7 @@ public class Orderer : Singleton<Orderer>
     {
         while (true)
         {
-            GenerateAuntie(difficulty);
+			if (auntie == null) GenerateAuntie(difficulty);
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 4);
         }
     }
@@ -59,17 +62,27 @@ public class Orderer : Singleton<Orderer>
 
     public void checkAndScoreDrink(Drink drink)
     {
+		Customer active = orders[0];
         // Fill aunty's orders first!!!!
         if (auntie != null)
         {
+			Debug.Log("Serve Auntie");
             if (auntie.SubmitDrink(drink))
             {
+				Debug.Log("Serve Auntie  CORRECT");
                 // SCORE!
+				playClip(correctAudioClip);
+				gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
+				auntie.angerLevel = 0;
+				auntie.OnComplete();
+				auntie.Leave();
                 auntie = null;
+				// Render unker's orders
+				active.SetSpeech(true);
+				active.ForceRenderText();
             }
             return;
         }
-        Customer active = orders[0];
         if (active.SubmitDrink(drink))
         {
 			playClip(correctAudioClip);
@@ -126,7 +139,21 @@ public class Orderer : Singleton<Orderer>
 
     void GenerateAuntie(Difficulty stageDifficulty)
     {
-        var threshold = 0.15f * stageDifficulty.stageDifficulty - 0.15f;
-        if (Random.Range(0f, 1f) < threshold) auntie = new Auntie(stageDifficulty, 10.0f);
+		// Generate auntie flying text
+
+		// Coroutine
+		// Generate auntie 3s later
+		Debug.Log("Auntie Generated");
+		var threshold = 0.15f * stageDifficulty.stageDifficulty - 0.15f;
+		if (Random.Range(0f, 1f) < threshold) 
+		{
+			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
+			auntie.Init(difficulty, Random.Range(5,10));
+
+			auntie.MoveTo(auntieDestination.transform.position);
+
+			// Auntie is priority
+			if (orders.Count > 0) orders[0].SetSpeech(false);
+		}
     }
 }

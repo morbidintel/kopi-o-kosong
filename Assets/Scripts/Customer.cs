@@ -103,7 +103,7 @@ public class Customer : MonoBehaviour
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 
-    protected void SetSpeech(bool val)
+    public void SetSpeech(bool val)
     {
         tmp.GetComponent<MeshRenderer>().enabled = val;
         speech.SetActive(val);
@@ -112,6 +112,11 @@ public class Customer : MonoBehaviour
             speech.GetComponent<DOTweenAnimation>().DOPlay();
         }
     }
+
+	protected void SetProgressBar(bool val) 
+	{
+		progressBar.gameObject.SetActive(false);
+	}
 
     public void SetLayerOrder(int i)
     {
@@ -123,6 +128,7 @@ public class Customer : MonoBehaviour
     public void Leave()
     {
         SetSpeech(false);
+		SetProgressBar(false);
         transform.DOMove(new Vector3(-10, 0, 0), 1).OnComplete(Kill);
     }
 

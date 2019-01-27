@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 using TMPro.Examples;
@@ -39,11 +40,7 @@ public class Auntie : Customer
 	// Override
     public bool SubmitDrink(Drink completedDrink)
     {
-        if (requestedDrink.Equals(completedDrink))
-        {
-            return true;
-        }
-        return false;
+		return completedDrink.Equals(drinkWanted);
     }
 
 	public bool IsAuntieFinished() 
@@ -66,6 +63,18 @@ public class Auntie : Customer
 		progressBar.setProgress(timeRemaining / totalTime);
     }
 
+	public void MoveTo(Vector3 location)
+	{
+		transform.DOMove(location, 1).OnComplete(RenderText);
+		int loops = Mathf.Abs(Mathf.FloorToInt(location.x - transform.position.x)) / 2;
+		if (loops > 2)
+		{
+			transform.DOMoveY(.5f, 1f / loops)
+				.SetLoops(loops - 2, LoopType.Yoyo)
+				.SetDelay(loops % 2 == 1 ? 1f / loops / 2f : 0);
+		}
+	}
+
 	public void RenderText()
 	{
 		// Do not render text when it is not the object in front
@@ -81,7 +90,7 @@ public class Auntie : Customer
 		List<string> completeDrinks = new List<string>();
 		SetSpeech(true);
 
-		tmp.text = "I would like a " + drinkWanted + ".";
+		tmp.text = drinkWanted + " PLS";
 
 		Debug.Log(tmp.text);
 		tmp.GetComponentInParent<VertexJitter>().StartAnim();
