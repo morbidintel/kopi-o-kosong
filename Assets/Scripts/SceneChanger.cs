@@ -49,11 +49,6 @@ public class SceneChanger : MonoBehaviour
 		StartCoroutine(LoadSceneCorot(scname, 0));
 	}
 
-	public void LoadSceneByAsset(UnityEditor.SceneAsset scene)
-	{
-		LoadSceneByName(scene.name);
-	}
-
 	public void Quit()
 	{
 #if UNITY_STANDALONE
