@@ -77,9 +77,7 @@ public class Auntie : Customer
 
 	public void RenderText()
 	{
-		// Do not render text when it is not the object in front
-		if (transform.GetSiblingIndex() != 0)
-			return;
+		// RENDER CAUSE ITS AUNTIE
 		SetSpeech(true);
 		ForceRenderText();
 	}
