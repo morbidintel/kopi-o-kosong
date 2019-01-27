@@ -76,7 +76,6 @@ public class GameController : Singleton<GameController>
         {
             gameHasEnded = true;
             Debug.Log("Game Over");
-            Invoke("Restart", restartDelay);
             UpdateScore();
             gameOverPanel.SetActive(true);
 		}

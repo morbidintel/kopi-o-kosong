@@ -52,10 +52,14 @@ public class Orderer : Singleton<Orderer>
             Drink d = difficulty.GetDrink();
             if (auntie == null && auntieDelay) 
             {
-                auntieShoutController.GetComponent<AuntieShoutController>().SpawnAuntieShout(d.ToString());
-
-                yield return new WaitForSeconds(3);
-                GenerateAuntie(difficulty, d);
+                Debug.Log("Auntie Generated");
+                var threshold = 0.5f * difficulty.stageDifficulty + 0.25f;
+                if (Random.Range(0f, 1f) < threshold)
+                {
+                    auntieShoutController.GetComponent<AuntieShoutController>().SpawnAuntieShout(d.ToString());
+                    yield return new WaitForSeconds(3);
+                    GenerateAuntie(difficulty, d);
+                }
             }
 
             auntieDelay = true;
@@ -115,7 +119,8 @@ public class Orderer : Singleton<Orderer>
 
 	void PlayIncorrectOrder(Customer active) {
 		audioSource.volume = 1;
-		active.PlayOnIncorrect();
+        if (active.angerLevel >= 3) ProcessQueue();
+        active.PlayOnIncorrect();
 		playClip(incorrectAudioClip);
 	}
 
@@ -159,17 +164,13 @@ public class Orderer : Singleton<Orderer>
 
 		// Coroutine
 		// Generate auntie 3s later
-		Debug.Log("Auntie Generated");
-		var threshold = 0.5f * stageDifficulty.stageDifficulty + 0.25f;
-		if (Random.Range(0f, 1f) < threshold) 
-		{
-			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
-			auntie.Init(stageDifficulty, Random.Range(5,10), drink);
+		auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
+		auntie.Init(stageDifficulty, Random.Range(5,10), drink);
 
-			auntie.MoveTo(auntieDestination.transform.position);
+		auntie.MoveTo(auntieDestination.transform.position);
 
-			// Auntie is priority
-			if (orders.Count > 0) orders[0].SetSpeech(false);
-		}
+		// Auntie is priority
+		if (orders.Count > 0) orders[0].SetSpeech(false);
+		
     }
 }
