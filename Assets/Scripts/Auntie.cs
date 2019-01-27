@@ -23,18 +23,12 @@ public class Auntie : Customer
 
     public Auntie(Difficulty difficulty, float timeLimit, Drink drinkWanted)
     {
-		this.drinkWanted = drinkWanted;
-        this.timeRemaining = timeLimit;
-
-		this.difficulty = difficulty;
-
 		// Summon Scream
 		// Instantiate(AuntieShout[Random.Range(0, 2)], transform).GetComponent<TextMeshPro>().text = "Hello";
     }
 
 	public void Init(Difficulty difficulty, float timeLimit, Drink drinkWanted)
 	{
-		drinkWanted = difficulty.GetDrink();
 		timeRemaining = timeLimit;
 		totalTime = timeLimit;
 		this.drinkWanted = drinkWanted;
