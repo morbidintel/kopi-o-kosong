@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4527,6 +4527,7 @@ MonoBehaviour:
     type: 3}
   finalDestination: {fileID: 1891860542}
   auntieDestination: {fileID: 2027645208}
+  auntieShoutController: {fileID: 1280947522}
   gameController: {fileID: 129733225}
   correctAudioClip: {fileID: 8300000, guid: d498e3733be46422286e465c53e2c29f, type: 3}
   incorrectAudioClip: {fileID: 8300000, guid: 775e5f4f0914af74cadf8389d702e752, type: 3}
@@ -6956,7 +6957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027645208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.61, y: 0.74, z: 0}
+  m_LocalPosition: {x: 6.35, y: 1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
