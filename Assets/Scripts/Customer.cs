@@ -19,6 +19,7 @@ public class Customer : MonoBehaviour
     public GameObject speech;
 
 	protected ProgressBar progressBar;
+    protected SpriteRenderer[] progBarSprRenders;
 
     [SerializeField]
     UnityEvent onComplete;
@@ -35,6 +36,9 @@ public class Customer : MonoBehaviour
         speech.SetActive(false);
 
 		progressBar = GetComponentInChildren<ProgressBar>();
+
+        progBarSprRenders = progressBar.GetComponentsInChildren<SpriteRenderer>();
+        ToggleProgressBar(false);
     }
 
     public void Init(Difficulty difficulty, float timeLimit)
@@ -84,6 +88,14 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public void ToggleProgressBar(bool val)
+    {
+        for (int i = 0; i < progBarSprRenders.Length; i++)
+        {
+            progBarSprRenders[i].enabled = val;
+        }
+    }
+
     public void RenderText()
     {
         // Do not render text when it is not the object in front
@@ -100,6 +112,7 @@ public class Customer : MonoBehaviour
         tmp.text = "I would like a " + drinkWanted + ".";
 
         Debug.Log(tmp.text);
+        ToggleProgressBar(true);
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 
@@ -141,7 +154,12 @@ public class Customer : MonoBehaviour
     {
 		timeRemaining -= Time.deltaTime * 500; // 10 seconds
         DOTween.Restart(gameObject, "shake");
-        if (angerLevel >= 2)
+		if (angerLevel >= 3) {
+			timeRemaining = 0;
+			CameraShake.Shake(0.5f,  0.5f);
+			Leave();
+		}
+        else if (angerLevel >= 2)
         {
 			DOTween.Restart(gameObject, "anger3");
             angerLevel++;

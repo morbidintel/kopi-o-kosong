@@ -37,18 +37,18 @@ public class InputController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Return))
-		{
-			if (!pausePanel.activeInHierarchy)
-			{
-				Pause();
-			}
-			else if (pausePanel.activeInHierarchy)
-			{
-				Continue();
-			}
-		}
-		else if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!pausePanel.activeInHierarchy)
+            {
+                Pause();
+            }
+            else if (pausePanel.activeInHierarchy)
+            {
+                Continue();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
 		{
 			// Empty Cup
 			playerDrink.Empty();

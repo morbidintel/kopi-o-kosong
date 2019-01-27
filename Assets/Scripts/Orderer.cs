@@ -18,6 +18,8 @@ public class Orderer : Singleton<Orderer>
 	public AudioClip correctAudioClip;
 	public AudioClip incorrectAudioClip;
 
+    private bool auntieDelay = false;
+
 
     private Vector3 offset = new Vector3(1f, 0f, 0f);
 
@@ -25,7 +27,6 @@ public class Orderer : Singleton<Orderer>
     // Start is called before the first frame update
     void Start()
     {
-
 		gameObject.AddComponent<AudioSource>();
 		auntie = null;
         StartCoroutine(AuntieCoroutine());
@@ -47,8 +48,9 @@ public class Orderer : Singleton<Orderer>
         while (true)
         {
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
-			if (auntie == null) GenerateAuntie(difficulty);
-            yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 4);
+			if (auntie == null && auntieDelay) GenerateAuntie(difficulty);
+            auntieDelay = true;
+            yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 3 + 10);
         }
     }
 
@@ -146,7 +148,7 @@ public class Orderer : Singleton<Orderer>
 		// Coroutine
 		// Generate auntie 3s later
 		Debug.Log("Auntie Generated");
-		var threshold = 0.15f * stageDifficulty.stageDifficulty - 0.15f;
+		var threshold = 0.5f * stageDifficulty.stageDifficulty + 0.25f;
 		if (Random.Range(0f, 1f) < threshold) 
 		{
 			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
