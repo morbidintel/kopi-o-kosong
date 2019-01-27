@@ -21,6 +21,8 @@ public class Customer : MonoBehaviour
     UnityEvent onComplete;
 
     SpriteRenderer spriteRenderer;
+
+    public int angerLevel;
     public Sprite[] characters = new Sprite[5];
     public void Start()
     {
@@ -65,13 +67,13 @@ public class Customer : MonoBehaviour
     public void MoveTo(Vector3 location)
     {
         transform.DOMove(location, 1).OnComplete(RenderText);
-		int loops = Mathf.Abs(Mathf.FloorToInt(location.x - transform.position.x)) / 2;
-		if (loops > 2)
-		{
-			transform.DOMoveY(.5f, 1f / loops)
-					.SetLoops(loops - 2, LoopType.Yoyo)
-					.SetDelay(loops % 2 == 1 ? 1f / loops / 2f : 0);
-		}
+        int loops = Mathf.Abs(Mathf.FloorToInt(location.x - transform.position.x)) / 2;
+        if (loops > 2)
+        {
+            transform.DOMoveY(.5f, 1f / loops)
+                    .SetLoops(loops - 2, LoopType.Yoyo)
+                    .SetDelay(loops % 2 == 1 ? 1f / loops / 2f : 0);
+        }
     }
 
     public void RenderText()
@@ -117,5 +119,25 @@ public class Customer : MonoBehaviour
     private void Kill()
     {
         Destroy(gameObject);
+    }
+
+    public void PlayOnIncorrect()
+    {
+        DOTween.Restart(gameObject, "shake");
+        if (angerLevel >= 2)
+        {
+			DOTween.Restart(gameObject, "anger3");
+            angerLevel++;
+        }
+        else if (angerLevel >= 1)
+        {
+            DOTween.Restart(gameObject, "anger2");
+            angerLevel++;
+        }
+        else if (angerLevel >= 0)
+        {
+            DOTween.Restart(gameObject, "anger1");
+            angerLevel++;
+        }
     }
 }

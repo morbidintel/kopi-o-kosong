@@ -12,6 +12,9 @@ public class Orderer : Singleton<Orderer>
     public GameObject customerPrefab;
     public GameObject finalDestination;
     public GameObject gameController;
+    private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
+	public AudioClip correctAudioClip;
+	public AudioClip incorrectAudioClip;
 
     private Difficulty difficulty;
     private Vector3 offset = new Vector3(1f, 0f, 0f);
@@ -21,6 +24,7 @@ public class Orderer : Singleton<Orderer>
     void Start()
     {
         difficulty = GameController.Instance.difficulty;
+		gameObject.AddComponent<AudioSource>();
         StartCoroutine(AuntieCoroutine());
         StartCoroutine(OrderCoroutine());
     }
@@ -71,16 +75,31 @@ public class Orderer : Singleton<Orderer>
         Customer active = orders[0];
         if (active.SubmitDrink(drink))
         {
+			playClip(correctAudioClip);
             gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
-            active.OnComplete();
+            active.angerLevel = 0;
+			active.OnComplete();
             active.Leave();
             ProcessQueue();
             return;
         }
-
+		PlayIncorrectOrder(active);
         // If not fulfilled, do something
         //todo: penalty
     }
+
+	void PlayIncorrectOrder(Customer active) {
+		audioSource.volume = 1;
+		active.PlayOnIncorrect();
+		playClip(incorrectAudioClip);
+	}
+
+	public void playClip(AudioClip audioClip)
+	{
+		audioSource.Stop();
+		audioSource.clip = audioClip;
+		audioSource.PlayOneShot(audioClip);
+	}
 
     void GenerateOrder(Difficulty stageDifficulty)
     {

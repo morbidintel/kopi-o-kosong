@@ -126,7 +126,7 @@ public class InputController : MonoBehaviour
 		{
 			// Serve Cup
 			playerDrink.Serve();
-			playClip(serveClip);
+			//playClip(serveClip);
 			Debug.Log("serve drink");
 		}
         playerDrink.RenderDrink();

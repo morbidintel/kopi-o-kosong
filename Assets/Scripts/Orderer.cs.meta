@@ -3,7 +3,13 @@ guid: 034c616fa01d8b846b9d3b0dc1110d43
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - customerPrefab: {instanceID: 0}
+  - finalDestination: {instanceID: 0}
+  - gameController: {instanceID: 0}
+  - correctAudioClip: {fileID: 8300000, guid: d498e3733be46422286e465c53e2c29f, type: 3}
+  - incorrectAudioClip: {fileID: 8300000, guid: 8f54a6a661fd84e19917d09d722ca37d,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
