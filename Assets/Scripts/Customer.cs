@@ -158,7 +158,7 @@ public class Customer : MonoBehaviour
 
     private void Kill()
     {
-        Destroy(gameObject);
+        if (gameObject) Destroy(gameObject);
     }
 
     public void PlayOnIncorrect()

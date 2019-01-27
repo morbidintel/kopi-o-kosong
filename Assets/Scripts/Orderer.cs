@@ -13,6 +13,7 @@ public class Orderer : Singleton<Orderer>
 	public GameObject auntiePrefab;
     public GameObject finalDestination;
 	public GameObject auntieDestination;
+    public GameObject auntieShoutController;
     public GameObject gameController;
     private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
 	public AudioClip correctAudioClip;
@@ -48,7 +49,16 @@ public class Orderer : Singleton<Orderer>
         while (true)
         {
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
-			if (auntie == null && auntieDelay) GenerateAuntie(difficulty);
+            Drink d = difficulty.GetDrink();
+            //if (auntie == null && auntieDelay) 
+            {
+                auntieShoutController.GetComponent<AuntieShoutController>().SpawnAuntieShout(d.ToString());
+
+                yield return new WaitForSeconds(3);
+                GenerateAuntie(difficulty, d);
+            }
+
+            //if (auntie == null && auntieDelay) GenerateAuntie(difficulty);
             auntieDelay = true;
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 3 + 10);
         }
@@ -81,7 +91,6 @@ public class Orderer : Singleton<Orderer>
 				playClip(correctAudioClip);
 				gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
 				auntie.angerLevel = 0;
-				auntie.OnComplete();
 				auntie.Leave();
                 auntie = null;
                 // Render unker's orders
@@ -97,7 +106,6 @@ public class Orderer : Singleton<Orderer>
             gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
             gameController.GetComponent<GameController>().AddTime(difficulty.stageDifficulty);
             active.angerLevel = 0;
-			active.OnComplete();
             active.Leave();
             ProcessQueue();
             return true;
@@ -146,18 +154,18 @@ public class Orderer : Singleton<Orderer>
         }
     }
 
-    void GenerateAuntie(Difficulty stageDifficulty)
+    void GenerateAuntie(Difficulty stageDifficulty, Drink drink)
     {
 		// Generate auntie flying text
 
 		// Coroutine
 		// Generate auntie 3s later
 		Debug.Log("Auntie Generated");
-		var threshold = 0.5f * stageDifficulty.stageDifficulty + 0.25f;
+		var threshold = 0.5f * stageDifficulty.stageDifficulty + 1.25f;
 		if (Random.Range(0f, 1f) < threshold) 
 		{
 			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
-			auntie.Init(stageDifficulty, Random.Range(5,10));
+			auntie.Init(stageDifficulty, Random.Range(5,10), drink);
 
 			auntie.MoveTo(auntieDestination.transform.position);
 
