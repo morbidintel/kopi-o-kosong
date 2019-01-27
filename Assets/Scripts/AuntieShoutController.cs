@@ -23,8 +23,9 @@ public class AuntieShoutController : MonoBehaviour
 		float xPos = SpawnPoint_min.x;
 		float yPos = SpawnPoint_min.y;
 
-		GameObject shoutObj = Instantiate(ShoutPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity, transform);
-		shoutObj.GetComponent<TextMeshPro>().text = text;
+		GameObject shoutObj = Instantiate(ShoutPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
+        shoutObj.transform.parent = null; 
+        shoutObj.GetComponent<TextMeshPro>().text = text;
 
 		xPos = EndPoint_max.x;
 		yPos = EndPoint_max.y;
