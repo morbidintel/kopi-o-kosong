@@ -86,22 +86,25 @@ public class Difficulty
                 drinkFormula[5]);
     }
 
-    public List<Drink> GenerateDrinkList()
+    public static Difficulty GetDifficulty(int score)
     {
-        maxOrderSize = Random.Range(minOrderSize, maxOrderSize);
-        List<Drink> orders = new List<Drink>();
-        for (int i=0; i<maxOrderSize; i++)
+        if (score < 3 * 60) 
         {
-            int[] drinkFormula = DrinkTypes.Types[availableDrinks[Random.Range(0, availableDrinks.Count)]];
-            orders.Add(new Drink(
-                drinkFormula[0],
-                drinkFormula[1],
-                drinkFormula[2],
-                drinkFormula[3],
-                drinkFormula[4],
-                drinkFormula[5]
-            ));
+            return new Difficulty(1);
         }
-        return orders;
+        else if (score < 6 * 60)
+        {
+            return new Difficulty(2);
+        }
+        else if (score < 12 * 60)
+        {
+            return new Difficulty(3);
+        }
+        else if (score < 18 * 60)
+        {
+            return new Difficulty(4);
+        }
+        return new Difficulty(5);
+        
     }
 }

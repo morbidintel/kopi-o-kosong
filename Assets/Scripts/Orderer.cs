@@ -18,14 +18,14 @@ public class Orderer : Singleton<Orderer>
 	public AudioClip correctAudioClip;
 	public AudioClip incorrectAudioClip;
 
-    private Difficulty difficulty;
+
     private Vector3 offset = new Vector3(1f, 0f, 0f);
 
 
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = GameController.Instance.difficulty;
+
 		gameObject.AddComponent<AudioSource>();
 		auntie = null;
         StartCoroutine(AuntieCoroutine());
@@ -46,6 +46,7 @@ public class Orderer : Singleton<Orderer>
     {
         while (true)
         {
+            Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
 			if (auntie == null) GenerateAuntie(difficulty);
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 4);
         }
@@ -55,6 +56,7 @@ public class Orderer : Singleton<Orderer>
     {
         while (true)
         {
+            Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             GenerateOrder(difficulty);
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 2);
         }
@@ -114,7 +116,7 @@ public class Orderer : Singleton<Orderer>
     void GenerateOrder(Difficulty stageDifficulty)
     {
         Customer cust = Instantiate(customerPrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Customer>();
-        cust.Init(difficulty, 60.0f);
+        cust.Init(stageDifficulty, 60.0f);
         int positionInQueue = orders.Count();
         cust.SetLayerOrder(999 - positionInQueue);
         cust.MoveTo(finalDestination.transform.position + offset * positionInQueue);
@@ -148,7 +150,7 @@ public class Orderer : Singleton<Orderer>
 		if (Random.Range(0f, 1f) < threshold) 
 		{
 			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
-			auntie.Init(difficulty, Random.Range(5,10));
+			auntie.Init(stageDifficulty, Random.Range(5,10));
 
 			auntie.MoveTo(auntieDestination.transform.position);
 

@@ -31,6 +31,7 @@ public class GameController : Singleton<GameController>
 		{
 			GameOver();
 		}
+        difficulty = Difficulty.GetDifficulty(score);
 	}
 
 	void GameOver()

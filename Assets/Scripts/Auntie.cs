@@ -27,7 +27,7 @@ public class Auntie : Customer
 
     public Auntie(Difficulty difficulty, float timeLimit)
     {
-        this.requestedDrink = difficulty.GenerateDrinkList()[0];
+        this.requestedDrink = difficulty.GetDrink();
         this.timeRemaining = timeLimit;
 		numOfDrinkToDo = Random.Range(0, randomNumOfDrink);
 
@@ -48,7 +48,7 @@ public class Auntie : Customer
 		if (numOfDrinkCompleted < numOfDrinkToDo) 
 		{
 			// Reset drink here
-			this.requestedDrink = difficulty.GenerateDrinkList()[0];
+			this.requestedDrink = difficulty.GetDrink();
 			ClearText();
 			ForceRenderText();
 			return false;
