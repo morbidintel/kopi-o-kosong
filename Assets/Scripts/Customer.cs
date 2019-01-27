@@ -11,16 +11,19 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     public Drink drinkWanted;
     public float timeRemaining;
+	protected float totalTime;
     public bool success;
-    public bool isActiveCustomer;
+	public bool isActiveCustomer;
 
     public TextMeshPro tmp;
     public GameObject speech;
 
+	protected ProgressBar progressBar;
+
     [SerializeField]
     UnityEvent onComplete;
 
-    SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     public Sprite[] characters = new Sprite[5];
     public void Start()
     {
@@ -28,12 +31,15 @@ public class Customer : MonoBehaviour
         int index = Random.Range(0, 5);
         spriteRenderer.sprite = characters[index];
         speech.SetActive(false);
+
+		progressBar = GetComponentInChildren<ProgressBar>();
     }
 
     public void Init(Difficulty difficulty, float timeLimit)
     {
         drinkWanted = difficulty.GetDrink();
         timeRemaining = timeLimit;
+		totalTime = timeLimit;
     }
 
     public bool SubmitDrink(Drink completedDrink)
@@ -49,6 +55,7 @@ public class Customer : MonoBehaviour
     void Update()
     {
         timeRemaining -= Time.deltaTime;
+		progressBar.setProgress(timeRemaining / totalTime);
     }
 
     public void OnFinishTween()
@@ -93,7 +100,7 @@ public class Customer : MonoBehaviour
         tmp.GetComponentInParent<VertexJitter>().StartAnim();
     }
 
-    private void SetSpeech(bool val)
+    protected void SetSpeech(bool val)
     {
         tmp.GetComponent<MeshRenderer>().enabled = val;
         speech.SetActive(val);

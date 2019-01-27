@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641275, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,7 +177,7 @@ MonoBehaviour:
   unker: {fileID: 1160247345}
   playerDrink: {fileID: 1160247346}
   pausePanel: {fileID: 815102833}
-  cup: {fileID: 0}
+  cup: {fileID: 1160247345}
   kopi: {fileID: 2141610527}
   teh: {fileID: 1784878524}
   sugarSpoon: {fileID: 1316485996}
