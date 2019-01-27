@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4366,6 +4366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280947523}
   - component: {fileID: 1280947524}
+  - component: {fileID: 1280947525}
   m_Layer: 0
   m_Name: Unkers
   m_TagString: Untagged
@@ -4404,11 +4405,28 @@ MonoBehaviour:
     type: 3}
   auntiePrefab: {fileID: 6507319186172473990, guid: 8fee9d80bc07df7479542f9454d222a8,
     type: 3}
+  auntieShoutController: {fileID: 1280947522}
   finalDestination: {fileID: 1891860542}
   auntieDestination: {fileID: 2027645208}
   gameController: {fileID: 129733225}
   correctAudioClip: {fileID: 8300000, guid: d498e3733be46422286e465c53e2c29f, type: 3}
   incorrectAudioClip: {fileID: 8300000, guid: 775e5f4f0914af74cadf8389d702e752, type: 3}
+--- !u!114 &1280947525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280947522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da437acbdb2f4c345867ed13b41480ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShoutPrefab: {fileID: 5848799728350820858, guid: e6bc99cc47e44404cbf148a641557d67,
+    type: 3}
+  SpawnPoint_min: {x: 20, y: 0}
+  EndPoint_max: {x: -5, y: 3.6}
 --- !u!1 &1316485996
 GameObject:
   m_ObjectHideFlags: 0

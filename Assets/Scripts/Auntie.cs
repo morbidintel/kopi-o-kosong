@@ -8,12 +8,8 @@ using TMPro.Examples;
 public class Auntie : Customer
 {
     // Start is called before the first frame update
-    public Drink requestedDrink;
 
-	private int numOfDrinkCompleted = 0;
-	private int numOfDrinkToDo;
 	private Difficulty difficulty;
-	public int randomNumOfDrink = 2;
 
 	public GameObject[] AuntieShout = new GameObject[2];
 
@@ -25,37 +21,30 @@ public class Auntie : Customer
 		progressBar = GetComponentInChildren<ProgressBar>();
 	}
 
-    public Auntie(Difficulty difficulty, float timeLimit)
+    public Auntie(Difficulty difficulty, float timeLimit, Drink drinkWanted)
     {
-        this.requestedDrink = difficulty.GetDrink();
+		this.drinkWanted = drinkWanted;
         this.timeRemaining = timeLimit;
-		numOfDrinkToDo = Random.Range(0, randomNumOfDrink);
 
 		this.difficulty = difficulty;
 
 		// Summon Scream
-		Instantiate(AuntieShout[Random.Range(0, 2)], transform).GetComponent<TextMeshPro>().text = "Hello";
+		// Instantiate(AuntieShout[Random.Range(0, 2)], transform).GetComponent<TextMeshPro>().text = "Hello";
     }
+
+	public void Init(Difficulty difficulty, float timeLimit, Drink drinkWanted)
+	{
+		drinkWanted = difficulty.GetDrink();
+		timeRemaining = timeLimit;
+		totalTime = timeLimit;
+		this.drinkWanted = drinkWanted;
+	}
 
 	// Override
     public bool SubmitDrink(Drink completedDrink)
     {
 		return completedDrink.Equals(drinkWanted);
     }
-
-	public bool IsAuntieFinished() 
-	{
-		if (numOfDrinkCompleted < numOfDrinkToDo) 
-		{
-			// Reset drink here
-			this.requestedDrink = difficulty.GetDrink();
-			ClearText();
-			ForceRenderText();
-			return false;
-		}
-
-		return true;
-	}
 
     void Update()
     {
