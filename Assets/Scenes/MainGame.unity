@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -695,11 +695,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   __messageText: 
   timeRemaining: 0
-  timeIncrement: 0
   restartDelay: 4
   gameOverPanel: {fileID: 1419301534}
   scoreText: {fileID: 1336925946}
   score: 0
+  bgMusic: {fileID: 1186829115}
 --- !u!114 &129733228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3825,7 +3825,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2f7213ad44a6094f8f6e934527a0b68, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

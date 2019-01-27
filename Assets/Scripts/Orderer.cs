@@ -113,6 +113,7 @@ public class Orderer : Singleton<Orderer>
 	{
 		audioSource.Stop();
 		audioSource.clip = audioClip;
+		audioSource.volume = Settings.EffectsVolume;
 		audioSource.PlayOneShot(audioClip);
 	}
 

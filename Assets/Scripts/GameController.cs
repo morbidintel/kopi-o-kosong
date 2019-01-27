@@ -17,10 +17,14 @@ public class GameController : Singleton<GameController>
     bool gameHasEnded;
     public Difficulty difficulty = new Difficulty(1);
 
+	public AudioSource bgMusic;
+
     void Start()
     {
         timeRemaining = 60;
         StartCoroutine(InitiateUIButtons());
+
+		if (!bgMusic) bgMusic.volume = Settings.MusicVolume;
     }
 
     IEnumerator InitiateUIButtons()

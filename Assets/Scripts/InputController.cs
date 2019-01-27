@@ -136,6 +136,7 @@ public class InputController : MonoBehaviour
 	{
 		audioSource.Stop();
 		audioSource.clip = audioClip;
+		audioSource.volume = Settings.EffectsVolume;
 		audioSource.PlayOneShot(audioClip);
 	}
 
