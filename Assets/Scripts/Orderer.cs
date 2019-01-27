@@ -11,7 +11,6 @@ public class Orderer : Singleton<Orderer>
 
     public GameObject customerPrefab;
 	public GameObject auntiePrefab;
-	public GameObject auntieShoutController;
     public GameObject finalDestination;
 	public GameObject auntieDestination;
     public GameObject gameController;
@@ -49,14 +48,7 @@ public class Orderer : Singleton<Orderer>
         while (true)
         {
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
-			Drink d = difficulty.GetDrink();	
-			//if (auntie == null && auntieDelay) 
-			{
-				auntieShoutController.GetComponent<AuntieShoutController>().SpawnAuntieShout(d.ToString());
-
-				yield return new WaitForSeconds(3);
-				GenerateAuntie(difficulty, d);
-			}
+			if (auntie == null && auntieDelay) GenerateAuntie(difficulty);
             auntieDelay = true;
             yield return new WaitForSeconds((5 - difficulty.stageDifficulty) * 3 + 10);
         }
@@ -74,6 +66,9 @@ public class Orderer : Singleton<Orderer>
 
     public bool checkAndScoreDrink(Drink drink)
     {
+		if (orders.Count == 0) {
+			return false;
+		}
 		Customer active = orders[0];
         // Fill aunty's orders first!!!!
         if (auntie != null)
@@ -81,7 +76,7 @@ public class Orderer : Singleton<Orderer>
 			Debug.Log("Serve Auntie");
             if (auntie.SubmitDrink(drink))
             {
-				Debug.Log("Serve Auntie  CORRECT");
+				Debug.Log("Serve Auntie CORRECT");
                 // SCORE!
 				playClip(correctAudioClip);
 				gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
@@ -91,18 +86,17 @@ public class Orderer : Singleton<Orderer>
                 auntie = null;
                 // Render unker's orders
                 active.SetSpeechVisible(true);
-                return true;
+				return true;
             }
             return false;
         }
         if (active.SubmitDrink(drink))
         {
 			playClip(correctAudioClip);
-
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
             gameController.GetComponent<GameController>().AddTime(difficulty.stageDifficulty);
-
+            active.angerLevel = 0;
 			active.OnComplete();
             active.Leave();
             ProcessQueue();
@@ -152,7 +146,7 @@ public class Orderer : Singleton<Orderer>
         }
     }
 
-    void GenerateAuntie(Difficulty stageDifficulty, Drink drink)
+    void GenerateAuntie(Difficulty stageDifficulty)
     {
 		// Generate auntie flying text
 
@@ -160,10 +154,10 @@ public class Orderer : Singleton<Orderer>
 		// Generate auntie 3s later
 		Debug.Log("Auntie Generated");
 		var threshold = 0.5f * stageDifficulty.stageDifficulty + 0.25f;
-		//if (Random.Range(0f, 1f) < threshold) 
+		if (Random.Range(0f, 1f) < threshold) 
 		{
 			auntie = Instantiate(auntiePrefab, new Vector3(10f, 0f, 0f), Quaternion.identity, transform).GetComponent<Auntie>();
-			auntie.Init(stageDifficulty, Random.Range(5,10), drink);
+			auntie.Init(stageDifficulty, Random.Range(5,10));
 
 			auntie.MoveTo(auntieDestination.transform.position);
 
