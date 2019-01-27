@@ -59,8 +59,7 @@ public class Drink
     // Print name of the drink.
     public override string ToString()
     {
-        if (drinkKopi + drinkTeh > 1 ||
-            milkCondensed + milkEvaporated > 1 ||
+        if (milkCondensed + milkEvaporated > 1 ||
             sugarLevel > 2 ||
             iceLevel > 1)
         {
@@ -90,10 +89,15 @@ public class Drink
         if (kopi == 1)
         {
             return "KOPI";
+        } else if (kopi == 2) {
+            return "KOPI GAU";
         }
-        if (teh == 1)
+          else if (teh == 1)
         {
             return "TEH";
+        } else if (teh == 2)
+        {
+            return "TEH GAU";
         }
         return "";
     }

@@ -23,7 +23,6 @@ public class DrinkTypes
         _types.Add("kopi o siew dai", new int[] { 1, 1, 0, 0, 0, 0 });
         _types.Add("kopi c", new int[] { 2, 1, 0, 0, 1, 0 });
         _types.Add("kopi c kosong", new int[] { 0, 1, 0, 0, 1, 0 });
-        _types.Add("kopi kosong", new int[] { 0, 1, 0, 1, 0, 0 });
         _types.Add("kopi o kosong", new int[] { 0, 1, 0, 0, 0, 0 });
         
         // kopi peng variants
@@ -36,7 +35,6 @@ public class DrinkTypes
         _types.Add("kopi o peng siew dai", new int[] { 1, 1, 0, 0, 0, 1 });
         _types.Add("kopi c peng", new int[] { 2, 1, 0, 0, 1, 1 });
         _types.Add("kopi c kosong peng", new int[] { 0, 1, 0, 0, 1, 1 });
-        _types.Add("kopi kosong peng", new int[] { 0, 1, 0, 1, 0, 1 });
         _types.Add("kopi o kosong peng", new int[] { 0, 1, 0, 0, 0, 1 });
 
         // teh variants
@@ -49,7 +47,6 @@ public class DrinkTypes
         _types.Add("teh o siew dai", new int[] { 1, 0, 1, 0, 0, 0 });
         _types.Add("teh c", new int[] { 2, 0, 1, 0, 1, 0 });
         _types.Add("teh c kosong", new int[] { 0, 0, 1, 0, 1, 0 });
-        _types.Add("teh kosong", new int[] { 0, 0, 1, 1, 0, 0 });
         _types.Add("teh o kosong", new int[] { 0, 0, 1, 0, 0, 0 });
 
         // teh peng variants
@@ -62,7 +59,6 @@ public class DrinkTypes
         _types.Add("teh o peng siew dai", new int[] { 1, 0, 1, 0, 0, 1 });
         _types.Add("teh c peng", new int[] { 2, 0, 1, 0, 1, 1 });
         _types.Add("teh c kosong peng", new int[] { 0, 0, 1, 0, 1, 1 });
-        _types.Add("teh kosong peng", new int[] { 0, 0, 1, 1, 0, 1 });
         _types.Add("teh o kosong peng", new int[] { 0, 0, 1, 0, 0, 1 });
     }
 }

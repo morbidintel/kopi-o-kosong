@@ -26,6 +26,8 @@ public class Customer : MonoBehaviour
 
     protected SpriteRenderer spriteRenderer;
 
+    private bool hasRendered = false;
+
     public int angerLevel;
     public Sprite[] characters = new Sprite[5];
     public void Start()
@@ -101,14 +103,13 @@ public class Customer : MonoBehaviour
         // Do not render text when it is not the object in front
         if (transform.GetSiblingIndex() != 0)
             return;
-        SetSpeech(true);
         ForceRenderText();
     }
 
     public void ForceRenderText()
     {
+        hasRendered = true;
         SetSpeech(true);
-
         tmp.text = "I would like a " + drinkWanted + ".";
 
         Debug.Log(tmp.text);
@@ -127,6 +128,11 @@ public class Customer : MonoBehaviour
 
     public void SetSpeechVisible(bool val)
     {
+        if (!hasRendered)
+        {
+            ForceRenderText();
+            return;
+        }
         speech.SetActive(val);
         tmp.GetComponent<MeshRenderer>().enabled = val;
     }

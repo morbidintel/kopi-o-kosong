@@ -32,30 +32,25 @@ public class Difficulty
   
         if (difficulty >= 3)
         {
-            availableDrinks.Add("teh siew dai peng");
-            availableDrinks.Add("kopi siew dai peng");
-            availableDrinks.Add("teh gau");
-            availableDrinks.Add("teh o gau");
-            availableDrinks.Add("kopi gau");
-            availableDrinks.Add("kopi o gau");
-            availableDrinks.Add("kopi kosong");
-            availableDrinks.Add("teh kosong");
+            availableDrinks.Add("teh peng siew dai");
+            availableDrinks.Add("kopi peng siew dai");
             availableDrinks.Add("kopi o kosong");
             availableDrinks.Add("teh o kosong");
+            availableDrinks.Add("kopi o kosong peng");
+            availableDrinks.Add("teh o kosong peng");
         }
         //todo: stage 4 and 5
         if (difficulty >= 4) {
-            availableDrinks.Add("teh gau peng");
-            availableDrinks.Add("teh o gau peng");
-            availableDrinks.Add("kopi gau peng");
-            availableDrinks.Add("kopi o gau peng");
-            availableDrinks.Add("kopi kosong peng");
-            availableDrinks.Add("teh kosong peng");
-            availableDrinks.Add("kopi o kosong peng");
-            availableDrinks.Add("teh o kosong peng");
+            availableDrinks.Add("teh gau");
+            availableDrinks.Add("teh o gau");
             availableDrinks.Add("teh c");
             availableDrinks.Add("teh c kosong");
             availableDrinks.Add("teh c siew dai");
+            availableDrinks.Add("teh o gau peng");
+
+            availableDrinks.Add("kopi gau");
+            availableDrinks.Add("kopi o gau");
+            availableDrinks.Add("kopi o gau peng");
             availableDrinks.Add("kopi c");
             availableDrinks.Add("kopi c kosong");
             availableDrinks.Add("kopi c siew dai");   
@@ -65,13 +60,16 @@ public class Difficulty
             availableDrinks.Add("teh c peng");
             availableDrinks.Add("teh c kosong peng");
             availableDrinks.Add("teh c peng siew dai");
-            availableDrinks.Add("kopi c peng");
-            availableDrinks.Add("kopi c kosong peng");
-            availableDrinks.Add("kopi c peng siew dai"); 
             availableDrinks.Add("teh o siew dai");
             availableDrinks.Add("teh o peng siew dai");
+            availableDrinks.Add("teh gau peng");
+
+            availableDrinks.Add("kopi c peng");
+            availableDrinks.Add("kopi c kosong peng");
+            availableDrinks.Add("kopi c peng siew dai");
             availableDrinks.Add("kopi o siew dai");
             availableDrinks.Add("kopi o peng siew dai");
+            availableDrinks.Add("kopi gau peng");
         }
     }
 

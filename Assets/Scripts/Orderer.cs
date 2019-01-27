@@ -89,7 +89,9 @@ public class Orderer : Singleton<Orderer>
         if (active.SubmitDrink(drink))
         {
 			playClip(correctAudioClip);
+            Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
+            gameController.GetComponent<GameController>().AddTime(difficulty.stageDifficulty);
             active.angerLevel = 0;
 			active.OnComplete();
             active.Leave();

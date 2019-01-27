@@ -9,7 +9,6 @@ public class GameController : Singleton<GameController>
 {
 	public const float maxTimeRemaining = 60f;
 	public float timeRemaining;
-	public float timeIncrement;
 	public float restartDelay = 4f;
 	public GameObject gameOverPanel;
 	public Text scoreText;
@@ -45,7 +44,6 @@ public class GameController : Singleton<GameController>
 			gameOverPanel.SetActive(true);
 
 		}
-
 	}
 
 	public void Restart()
@@ -67,8 +65,10 @@ public class GameController : Singleton<GameController>
 		}
 	}
 
-	public void AddTime()
+	public void AddTime(int difficulty)
 	{
+        int timeIncrement = 10 - difficulty;
 		timeRemaining = Mathf.Min(timeRemaining += timeIncrement, maxTimeRemaining);
-	}
+        Debug.Log(timeRemaining);
+    }
 }
