@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Orderer : Singleton<Orderer>
 {
-    private List<Customer> orders = new List<Customer>();
+    public List<Customer> orders = new List<Customer>();
     private Auntie auntie;
 
     public GameObject customerPrefab;
@@ -20,8 +20,6 @@ public class Orderer : Singleton<Orderer>
 	public AudioClip incorrectAudioClip;
 
     private bool auntieDelay = false;
-
-
     private Vector3 offset = new Vector3(1f, 0f, 0f);
 
 
@@ -92,7 +90,7 @@ public class Orderer : Singleton<Orderer>
 				Debug.Log("Serve Auntie CORRECT");
                 // SCORE!
 				playClip(correctAudioClip);
-				gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
+				gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(auntie.timeRemaining));
 				auntie.angerLevel = 0;
 				auntie.Leave();
                 auntie = null;

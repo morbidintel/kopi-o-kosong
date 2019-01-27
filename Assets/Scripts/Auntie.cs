@@ -68,6 +68,7 @@ public class Auntie : MonoBehaviour
 			auntiePresent = false;
 			CameraShake.Shake(0.5f, 0.5f);
 			Leave();
+            Orderer.Instance.orders[0].SetSpeechVisible(true);
 		}
 
     }

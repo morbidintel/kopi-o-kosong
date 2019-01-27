@@ -10,7 +10,7 @@ public class AuntieShoutController : MonoBehaviour
 
 	// To determine the areas where the shout will spawn and the direction it flies
 	public Vector2 SpawnPoint_min = new Vector2(20.0f, 0.0f);
-	public Vector2 EndPoint_max = new Vector2(-5.0f, 3.6f);
+	public Vector2 EndPoint_max = new Vector2(-8.0f, 3.6f);
 	protected float yRange = 3.6f;
 
     // Start is called before the first frame update
