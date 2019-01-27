@@ -166,6 +166,7 @@ public class Customer : MonoBehaviour
 		timeRemaining -= Time.deltaTime * 500; // 10 seconds
         DOTween.Restart(gameObject, "shake");
 		if (angerLevel >= 3) {
+			GameController.Instance.timeRemaining -= 5f;
 			timeRemaining = 0;
 			CameraShake.Shake(0.5f,  0.5f);
 			Leave();

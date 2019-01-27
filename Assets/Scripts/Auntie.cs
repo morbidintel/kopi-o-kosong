@@ -16,7 +16,6 @@ public class Auntie : MonoBehaviour
 
     public TextMeshPro tmp;
     public GameObject speech;
-
     protected ProgressBar progressBar;
     protected SpriteRenderer[] progBarSprRenders;
 
@@ -29,6 +28,7 @@ public class Auntie : MonoBehaviour
     private Difficulty difficulty;
 
     public GameObject[] AuntieShout = new GameObject[2];
+	bool auntiePresent;
 
     public void Start()
     {
@@ -37,6 +37,7 @@ public class Auntie : MonoBehaviour
         spriteRenderer.sprite = characters[index];
 
         progressBar = GetComponentInChildren<ProgressBar>();
+		auntiePresent = true;
     }
 
     public Auntie(Difficulty difficulty, float timeLimit, Drink drinkWanted)
@@ -62,6 +63,13 @@ public class Auntie : MonoBehaviour
     {
         timeRemaining -= Time.deltaTime;
         progressBar.setProgress(timeRemaining / totalTime);
+		if (auntiePresent && (timeRemaining <= 0)) {
+			GameController.Instance.timeRemaining -= 10f;
+			auntiePresent = false;
+			CameraShake.Shake(0.5f, 0.5f);
+			Leave();
+		}
+
     }
 
     public void OnFinishTween()

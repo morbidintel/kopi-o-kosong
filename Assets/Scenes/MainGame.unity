@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4145,6 +4145,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stars
       objectReference: {fileID: 0}
+    - target: {fileID: 154827327666993101, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.maxCurve.m_Curve.Array.data[1].value
+      value: 0.05405426
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minCurve.m_Curve.Array.data[1].value
+      value: 0.05405426
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     - target: {fileID: 8548876507508670196, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4198,51 +4243,6 @@ PrefabInstance:
     - target: {fileID: 8548876507508670196, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.maxCurve.m_Curve.Array.data[1].value
-      value: 0.05405426
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.minCurve.m_Curve.Array.data[1].value
-      value: 0.05405426
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: ShapeModule.angle
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: ShapeModule.type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443070716551118212, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
-      objectReference: {fileID: 0}
-    - target: {fileID: 154827327666993101, guid: 0ae0bbd500eef40ff816c3a1d13d107a,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5361,7 +5361,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629515213
 MonoBehaviour:
@@ -6288,7 +6288,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1820972101
 MonoBehaviour:
