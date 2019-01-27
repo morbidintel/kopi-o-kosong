@@ -118,15 +118,20 @@ public class Customer : MonoBehaviour
 
     public void SetSpeech(bool val)
     {
-        tmp.GetComponent<MeshRenderer>().enabled = val;
-        speech.SetActive(val);
+        SetSpeechVisible(val);
         if (val)
         {
             speech.GetComponent<DOTweenAnimation>().DOPlay();
         }
     }
 
-	protected void SetProgressBar(bool val) 
+    public void SetSpeechVisible(bool val)
+    {
+        speech.SetActive(val);
+        tmp.GetComponent<MeshRenderer>().enabled = val;
+    }
+
+    protected void SetProgressBar(bool val) 
 	{
 		progressBar.gameObject.SetActive(false);
 	}

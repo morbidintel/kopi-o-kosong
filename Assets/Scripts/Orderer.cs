@@ -81,9 +81,8 @@ public class Orderer : Singleton<Orderer>
 				auntie.OnComplete();
 				auntie.Leave();
                 auntie = null;
-				// Render unker's orders
-				active.SetSpeech(true);
-				active.ForceRenderText();
+                // Render unker's orders
+                active.SetSpeechVisible(true);
             }
             return;
         }
