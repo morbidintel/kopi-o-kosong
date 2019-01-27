@@ -2,6 +2,7 @@
 using System.Collections;
 using Gamelogic.Extensions;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerDrink : Singleton<PlayerDrink>
 {
@@ -11,6 +12,8 @@ public class PlayerDrink : Singleton<PlayerDrink>
     public GameObject liquid;
     public GameObject ice;
     public GameObject milk;
+
+    public GameObject fx;
 
     private Color tehColor = new Color(255, 194, 70);
     private Color kopiColor = new Color(145, 124, 72);
@@ -39,7 +42,12 @@ public class PlayerDrink : Singleton<PlayerDrink>
     {
 		//scoring logic;
 		ice.gameObject.SetActive(false);
-		Orderer.Instance.checkAndScoreDrink(drink);
+		bool success = Orderer.Instance.checkAndScoreDrink(drink);
+        if (success)
+        {
+            fx.GetComponent<ParticleSystem>().Play();
+            DOTween.Restart(gameObject, "shakeCup");
+        }
         drink = new Drink();
     }
 

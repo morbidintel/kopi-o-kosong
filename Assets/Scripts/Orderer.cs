@@ -72,7 +72,7 @@ public class Orderer : Singleton<Orderer>
         }
     }
 
-    public void checkAndScoreDrink(Drink drink)
+    public bool checkAndScoreDrink(Drink drink)
     {
 		Customer active = orders[0];
         // Fill aunty's orders first!!!!
@@ -91,24 +91,25 @@ public class Orderer : Singleton<Orderer>
                 auntie = null;
                 // Render unker's orders
                 active.SetSpeechVisible(true);
+                return true;
             }
-            return;
+            return false;
         }
         if (active.SubmitDrink(drink))
         {
 			playClip(correctAudioClip);
+
             Difficulty difficulty = gameController.GetComponent<GameController>().difficulty;
             gameController.GetComponent<GameController>().AddScore((int)Mathf.Floor(active.timeRemaining));
             gameController.GetComponent<GameController>().AddTime(difficulty.stageDifficulty);
-            active.angerLevel = 0;
+
 			active.OnComplete();
             active.Leave();
             ProcessQueue();
-            return;
+            return true;
         }
 		PlayIncorrectOrder(active);
-        // If not fulfilled, do something
-        //todo: penalty
+        return false;
     }
 
 	void PlayIncorrectOrder(Customer active) {
