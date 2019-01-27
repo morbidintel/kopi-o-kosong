@@ -132,6 +132,7 @@ public class Customer : MonoBehaviour
 
     public void PlayOnIncorrect()
     {
+		timeRemaining -= Time.deltaTime * 500; // 10 seconds
         DOTween.Restart(gameObject, "shake");
         if (angerLevel >= 2)
         {
