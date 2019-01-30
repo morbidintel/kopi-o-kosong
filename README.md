@@ -1,4 +1,8 @@
+
 # Kopi O Kosong
+<p align="center">
+  <img src="doc/kok.gif">
+</p>
 A game created within 48h for Global Game Jam 2019, built with Unity.
 The theme was **"What home means to you"**.
 
